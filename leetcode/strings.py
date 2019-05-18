@@ -49,5 +49,22 @@ def unique_email_address(e: list) -> int:
 
     return len(mailing_list)
 
+def robot_return_to_origin(moves: str) -> bool:
+    x = 0
+    y = 0
 
-print(unique_email_address(["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]))
+    for move in moves:
+        if move == "R":
+            x += 1
+
+        elif move == "L":
+            x -= 1
+
+        elif move == "U":
+            y += 1
+
+        else:
+            y -= 1
+
+    return x == 0 and y == 0
+print(robot_return_to_origin("LL"))
