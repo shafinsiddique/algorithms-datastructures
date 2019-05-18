@@ -1,3 +1,4 @@
+"""This section consists of leetcode easy questions from the Strings Section."""
 def toLowerCase(s: str) -> str:
     """THis function returns a string in all lowercase."""
 
@@ -27,4 +28,26 @@ def uniqueMorseCodes(l: list) -> int:
 
     return len(final_list)
 
-print(uniqueMorseCodes(["gin", "zen", "gig", "msg"]))
+
+def unique_email_address(e: list) -> int:
+    mailing_list = []
+
+    for emails in e:
+        # can be optimized here if we write an if statement.
+        localname = emails[:emails.index("@")-1]
+
+        temp_email = ""
+
+        for chars in localname[:localname.index("+")-1]:
+            if chars != ".":
+                temp_email += chars
+
+        temp_email += emails[emails.index("@"):]
+
+        if temp_email not in mailing_list:
+            mailing_list.append(temp_email)
+
+    return len(mailing_list)
+
+
+print(unique_email_address(["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]))
