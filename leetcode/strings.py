@@ -67,4 +67,27 @@ def robot_return_to_origin(moves: str) -> bool:
             y -= 1
 
     return x == 0 and y == 0
-print(robot_return_to_origin("LL"))
+
+
+def reverse_words_in_string(s):
+    """Given a string, reverse the words in the string, while preserving
+    the whitespaces."""
+
+    words_wo_sp = s.split(" ")
+    reversed_words = []
+    for words in words_wo_sp:
+        reversed = ""
+
+        for x in range(len(words)-1,-1,-1):
+            reversed += words[x]
+
+        reversed_words.append(reversed)
+
+    final_string = ""
+
+    for w in reversed_words:
+        final_string += w
+        final_string += " "
+
+    return final_string
+print(reverse_words_in_string("Let's take LeetCode contest"))
