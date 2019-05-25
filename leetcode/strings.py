@@ -250,3 +250,41 @@ def count_binary_substrings(s):
     return len(_getsubstrings(s))
 
 
+def attendancerecord(s):
+    """Given an attendance record, return whether the student is eligible
+    for an award.
+    """
+
+    if s.count("A") > 1:
+        return False
+
+    else:
+        for x in range(len(s)-2):
+            if s[x] == "L" and s[x+1] == "L" and s[x+2] == "L":
+                return False
+
+    return True
+
+
+def longpressedname(name, typed):
+    if name == typed:
+        return True
+
+    else:
+        currentindex = 0
+        for y in range(len(name)-1):
+            if name[y] == typed[currentindex]:
+                if name[y] == name[y+1]:
+                    currentindex += 1
+                else:
+
+                    for x in range(currentindex, len(typed)):
+                        if typed[x] != name[y]:
+                            currentindex = x
+                            break
+
+            else:
+                return False
+
+        return True
+print(longpressedname("saeed", "ssaaedd"))
