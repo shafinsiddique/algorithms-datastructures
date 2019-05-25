@@ -210,5 +210,43 @@ def ransom_note(s1, s2):
 
     return True
 
-# print(reorder_log_files(["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo"]))
-print(ransom_note("a","b"))
+def grouped_together(s):
+    for x in range(len(s)-1):
+        if s[x] != s[x+1]:
+            if s[x] in s[x+1:]:
+                return False
+
+    return True
+def _checkequality(s):
+    onecount = 0
+    zerocount = 0
+
+
+    for chars in s:
+        if chars == "1":
+            onecount += 1
+
+        else:
+            zerocount += 1
+
+    return onecount == zerocount
+def _getsubstrings(s):
+    equal_substrings = []
+
+    for x in range(len(s)):
+        for y in range(len(s),x,-1):
+            substring = s[x:y]
+            if _checkequality(substring) and grouped_together(substring):
+
+                equal_substrings.append(substring)
+
+    return equal_substrings
+
+
+def count_binary_substrings(s):
+    """Given a string, count the number of substrings that have equal number of
+    consecutive 1 and 0s."""
+
+    return len(_getsubstrings(s))
+
+
