@@ -162,4 +162,34 @@ def reorder_log_files(logs: list) -> list:
 
     return unordered_letter_logs
 
-print(reorder_log_files(["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo"]))
+def _getsubsequence(s):
+    subsequences = []
+
+    for x in range(len(s)):
+        for y in range(len(s), x, -1):
+            subsequences.append(s[x:y])
+
+    return subsequences
+
+def lowest_uncommon_subsequence(s1, s2):
+    """return the length of the longest uncommon subsequence"""
+
+    s1_sub = _getsubsequence(s1)
+    s2_sub = _getsubsequence(s2)
+
+    uncommon_subs = []
+
+    for subs in s1_sub:
+        if subs not in s2_sub:
+            uncommon_subs.append(subs)
+
+    for subs in s2_sub:
+        if subs not in s1_sub:
+            uncommon_subs.append(subs)
+
+    lengths = [len(subs) for subs in uncommon_subs]
+
+    return max(lengths)
+
+# print(reorder_log_files(["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo"]))
+print(lowest_uncommon_subsequence("aba", "cdc"))
