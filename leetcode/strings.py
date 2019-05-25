@@ -90,4 +90,31 @@ def reverse_words_in_string(s):
         final_string += " "
 
     return final_string
-print(reverse_words_in_string("Let's take LeetCode contest"))
+
+
+def _isvowel(c) -> bool:
+    vowels = ["a","e","i","o","u", "A","E","I","O","U"]
+
+    return c in vowels
+
+def goat_latin(s):
+    sentence = s.split(" ")
+    translatedsentence = ""
+    for x in range(len(sentence)):
+        translatedword = ""
+        if _isvowel(sentence[x][0]):
+            translatedword += sentence[x] + "ma"
+
+
+        else:
+            translatedword += sentence[x][1:] + sentence[x][0] + "ma"
+
+        translatedword += "a"*x + " "
+
+        translatedsentence += translatedword
+
+    return translatedsentence
+
+
+
+print(goat_latin("I speak Goat Latin"))
