@@ -287,4 +287,37 @@ def longpressedname(name, typed):
                 return False
 
         return True
-print(longpressedname("saeed", "ssaaedd"))
+
+
+def swap(s, i, j):
+    swapped = ""
+
+    for x in range(len(s)):
+        if x == i:
+            swapped += s[j]
+
+        elif x == j:
+            swapped += s[i]
+
+        else:
+            swapped += s[x]
+
+    return swapped
+def buddystrings(s1, s2):
+    """Given two strings,
+    return true if and only if we can swap two letters in A so that a equals B.
+
+    """
+
+    for x in range(len(s1)-1):
+        for y in range(x+1, len(s1)):
+
+            swapped = swap(s1, x, y)
+
+            if swapped == s2:
+                return True
+
+    return False
+
+
+print(buddystrings("","aaaaaaacb"))
