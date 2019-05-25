@@ -115,6 +115,51 @@ def goat_latin(s):
 
     return translatedsentence
 
+def _isnumberlog(s):
+    """Return true if it is a number log."""
+
+    ignore_id = s.split(" ")
+
+    for logs in ignore_id[1:]:
+        if not logs.isdigit():
+            return False
+
+    return True
+
+def bubble_sort_letter(unordered_letter_logs):
+    """Sort the unordered letter logs."""
 
 
-print(goat_latin("I speak Goat Latin"))
+    for x in range(len(unordered_letter_logs)-1): # Probs should use helper method ehre.
+        for y in range(x+1, len(unordered_letter_logs)):
+            if unordered_letter_logs[x][1:] > unordered_letter_logs[y][1:]:
+                unordered_letter_logs[x], unordered_letter_logs[y] = \
+                unordered_letter_logs[y], unordered_letter_logs[x]
+
+            elif unordered_letter_logs[x][1:] == unordered_letter_logs[y][1:]:
+                if unordered_letter_logs[x] > unordered_letter_logs[y]:
+                    unordered_letter_logs[x], unordered_letter_logs[y] = \
+                        unordered_letter_logs[y], unordered_letter_logs[x]
+
+
+
+def reorder_log_files(logs: list) -> list:
+    """Given a list of logs, return them in the proper order."""
+
+    number_logs = []
+    unordered_letter_logs = []
+
+
+    for log in logs:
+        if _isnumberlog(log):
+            number_logs.append(log)
+
+        else:
+            unordered_letter_logs.append(log)
+
+    bubble_sort_letter(unordered_letter_logs)
+    unordered_letter_logs.extend(number_logs)
+
+    return unordered_letter_logs
+
+print(reorder_log_files(["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo"]))
