@@ -191,5 +191,24 @@ def lowest_uncommon_subsequence(s1, s2):
 
     return max(lengths)
 
+def ransom_note(s1, s2):
+    for characters in s1:
+        if characters in s2:
+            index = s2.index(characters)
+
+            temp_string = ""
+
+            for x in range(len(s2)):
+                if x != index:
+                    temp_string += s2[x]
+
+
+            s2 = temp_string
+
+        else:
+            return False
+
+    return True
+
 # print(reorder_log_files(["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo"]))
-print(lowest_uncommon_subsequence("aba", "cdc"))
+print(ransom_note("a","b"))
