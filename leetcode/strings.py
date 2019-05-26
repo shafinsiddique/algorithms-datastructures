@@ -320,4 +320,32 @@ def buddystrings(s1, s2):
     return False
 
 
-print(buddystrings("","aaaaaaacb"))
+def atoi(s):
+    s = s.strip()
+
+    if s[0] != '-' and s[0]!='+' and not s[0].isdigit():
+        return 0
+
+    else:
+        converted = ''
+
+        for characters in s:
+            if characters != "+" and characters != "-" and \
+                    not characters.isdigit():
+                break
+
+            converted += characters
+
+        converted = int(converted)
+
+        if converted < -2**31:
+            return -2**31
+
+        elif converted >= 2**31 - 1:
+            return 2**31 - 1
+
+        else:
+            return converted
+
+
+print(atoi("-91283472332"))
