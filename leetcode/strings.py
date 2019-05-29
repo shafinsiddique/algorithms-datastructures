@@ -347,5 +347,66 @@ def atoi(s):
         else:
             return converted
 
+def reverse_string2(s):
+    split = s.split(" ")
+    reversed = ""
 
-print(atoi("-91283472332"))
+    for x in range(len(split)-1,-1,-1):
+        reversed += split[x] + " "
+
+    return reversed
+
+
+def no_repeating(substring):
+    """return if the substring has any repeating characters."""
+
+    for x in range(len(substring)):
+        if substring[x] in substring[x+1:]:
+            return False
+
+    return True
+def get_substrings(s):
+    """Get all the substrings of all the string."""
+    substrings = []
+    for x in range(len(s)):
+        for y in range(len(s),x-1,-1):
+            if no_repeating(s[x:y]):
+                substrings.append(s[x:y])
+
+    return substrings
+
+def longest_substring_non_repeating(s):
+    """Given a string, find the length of the longest substring without repeating
+    characters."""
+
+    return max([len(substrings) for substrings in get_substrings(s)])
+
+
+def is_palindromic(s):
+    return s[:] == s[::-1]
+
+def get_substring2(s):
+    palindromic = []
+
+    for x in range(len(s)):
+        for y in range(len(s),x-1,-1):
+            if is_palindromic(s[x:y]):
+                palindromic.append(s[x:y])
+
+    return palindromic
+
+
+def longest_palindromic_substring(s):
+    """Given a string, find the length of the longest palindromic substring."""
+
+    palindrome = ""
+
+    for substrings in get_substring2(s):
+        if len(substrings) > len(palindrome):
+            palindrome = substrings
+
+    return palindrome
+
+# print(reverse_string2("the sky is blue"))
+
+print(longest_palindromic_substring("cbbd"))
