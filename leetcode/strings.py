@@ -407,6 +407,9 @@ def longest_palindromic_substring(s):
 
     return palindrome
 
+
+
+
 # print(reverse_string2("the sky is blue"))
 
 print(longest_palindromic_substring("cbbd"))
