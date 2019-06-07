@@ -19,4 +19,16 @@ def isPermutation(s,s2):
 
     return True
 
-print(isPermutation("abc","cab"))
+def urlify(s):
+    s = s.rstrip()
+    """Replace all characters in s with %20."""
+    finalstring = ""
+    for characters in s:
+        if characters == " ":
+            finalstring += "%20"
+
+        else:
+            finalstring += characters
+    return finalstring
+
+print(urlify(" Mr John Smith    "))
