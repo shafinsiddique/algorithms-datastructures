@@ -10,6 +10,17 @@ def isUnique(s):
 
     return True
 
+def permutations(string):
+    """Create all permutations of a string with non-repeating characters
+    """
+    permutation_list = []
+    if len(string) == 1:
+        return [string]
+    else:
+        for char in string:
+            [permutation_list.append(char + a) for a in permutations(string.replace(char, ""))]
+    return permutation_list
+
 def isPermutation(s,s2):
     """Given two strings, write a method to decide if one is a permutation of another."""
 
@@ -31,4 +42,17 @@ def urlify(s):
             finalstring += characters
     return finalstring
 
-print(urlify(" Mr John Smith    "))
+def isPalindrome(s):
+    return s[:] == s[::-1]
+
+def palindrome_permutation(s):
+    """Given a string, determine if it is a permutation of a palindrome."""
+
+    for permutation in permutations(s):
+        if isPalindrome(permutation):
+            return True
+
+    return False
+
+
+

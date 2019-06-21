@@ -408,8 +408,22 @@ def longest_palindromic_substring(s):
     return palindrome
 
 
+def reverse(s):
+    """Reverse a given string"""
+
+    newstring = ""
+
+    for x in range(len(s)-1,-1,-1):
+        newstring += s[x]
+
+    return newstring
 
 
-# print(reverse_string2("the sky is blue"))
+def target_sum(l, target):
+    for x in range(len(l)-1):
+        for y in range(x+1, len(l)):
+            if l[x] + l[y] == target:
+                return [x,y]
 
-print(longest_palindromic_substring("cbbd"))
+    return []
+
