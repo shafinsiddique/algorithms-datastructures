@@ -154,6 +154,27 @@ def monotonic(l):
     return False
 
 
+def maxProfit(p):
+    profits = []
 
-print(monotonic([1,3,2]))
+    counter = 0
+    while counter < len(p)-1:
+        if p[counter+1] > p[counter]:
+            buyprice =  p[counter]
+            sellprice = p[counter+1]
+            newcounter = counter + 1
+            counter += 2
+            while newcounter < len(p)-1 and p[newcounter] < p[newcounter+1]:
+                sellprice = p[newcounter+1]
+                counter = newcounter + 2
+                newcounter+=1
+
+            profits.append(sellprice - buyprice)
+        else:
+            counter += 1
+
+    return sum(profits)
+
+
+print(maxProfit([6,22,24,1,2,3,24,2]))
 
