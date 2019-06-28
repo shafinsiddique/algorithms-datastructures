@@ -92,7 +92,68 @@ def singleNumber(l):
 
     return temp[0]
 
+def duplicate_zeroes(l):
+    orglen = len(l)
+    counter= 0
+    while counter < len(l):
 
-print(reshapeMatrix([[1,2],[3,4]],1,4))
+        if l[counter] == 0:
+            l.insert(counter+1,0)
+            counter += 2
+        else:
+            counter += 1
+    counter = -1
+    if len(l) > orglen:
+        while len(l) != orglen:
+            l.pop(-1)
 
+def fairCandySwap(l1, l2):
+    for x in range(len(l1)):
+        for y in range(len(l2)):
+            l1without = l1[:x] + l1[x+1:]
+            l2without = l2[:y] + l2[y+1:]
+
+            if sum(l1without) + l2[y] == sum(l2without) + l1[x] :
+                return [l1[x],l2[y]]
+
+# def rob(nums):
+#     sums = []
+#
+#     if len(nums) == 0:
+#         return 0
+#
+#     elif len(nums) <=2 :
+#         return nums[0]
+#
+#     else:
+#         for x in range(len(nums)):
+#             sums.append(nums[x])
+#
+#             for y in range(x+2,len(nums),2):
+#                 sums[-1] += nums[y]
+#
+#
+#         return max(sums)
+
+def monotonicincreasing(l):
+    for x in range(len(l)):
+        if l[x] != min(l[x:]):
+            return False
+
+    return True
+
+def monotonicdecreasing(l):
+    for x in range(len(l)):
+        if l[x] != max(l[x:]):
+            return False
+
+    return True
+def monotonic(l):
+    if monotonicdecreasing(l) or monotonicincreasing(l):
+        return True
+    return False
+
+
+
+print(monotonic([1,3,2]))
 
