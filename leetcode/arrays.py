@@ -175,6 +175,24 @@ def maxProfit(p):
 
     return sum(profits)
 
+def twoSumII(numbers, target):
+    for x in range(len(numbers)-1):
+        for y in range(x+1,len(numbers)):
+            if numbers[x] + numbers[y] == target:
+                return [x+1,y+1]
 
-print(maxProfit([6,22,24,1,2,3,24,2]))
+            elif numbers[x] + numbers[y] > target:
+                break
+
+def buySellStock(prices):
+    profits = []
+
+    if sorted(prices, reverse=True) == prices:
+        return 0
+    else:
+        for x in range(len(prices)-1):
+            for y in range(x+1, len(prices)):
+                profits.append(prices[y]-prices[x])
+
+print(buySellStock([]))
 
