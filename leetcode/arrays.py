@@ -1,3 +1,4 @@
+import random
 def flip(list):
     flippedlist = []
     for x in range(len(list)-1,-1,-1):
@@ -194,5 +195,26 @@ def buySellStock(prices):
             for y in range(x+1, len(prices)):
                 profits.append(prices[y]-prices[x])
 
-print(buySellStock([]))
+def reveal(l):
+    while len(l) >= 2:
+        print(l.pop(0))
+        l.append(l.pop(0))
+
+    print(l.pop())
+
+
+def findallduplicates(l):
+    all_items  = []
+    dups = []
+
+    for items in l:
+        if items in all_items and items not in dups:
+            dups.append(items)
+
+        else:
+            all_items.append(items)
+
+    return dups
+
+print(findallduplicates([1,1,2,2,2,3,3,4,4,8,8,9]))
 
