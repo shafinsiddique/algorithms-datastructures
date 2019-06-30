@@ -70,13 +70,35 @@ def rotateArray(l):
         l.pop(0)
         l.append(tiems)
 
-def rotateArrayInPlace(l):
-    """Give an n x n matrix, rotate it in place."""
+def zeroMatrix(l):
+    """Zero Matrix."""
+    rowsToZero  = []
+    colsToZero =  []
+    for x in range(len(l)):
+        for y in range(len(l[0])):
+            if l[x][y] == 0:
+                if x not in rowsToZero:
+                    rowsToZero.append(x)
+                if y not in colsToZero:
+                    colsToZero.append(y)
+
+    for rows in rowsToZero:
+        for x in range(len(l[rows])):
+            l[rows][x] = 0
 
 
-l = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
-rotateArray(l)
+    for cols in colsToZero:
+        for x in range(len(l)):
+            l[x][cols] = 0
+
+
+
+
+
+l = [[1,0,1],[2,2,2],[3,3,0]]
+zeroMatrix(l)
 print(l)
+
 
 
 
