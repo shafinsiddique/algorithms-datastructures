@@ -54,5 +54,29 @@ def palindrome_permutation(s):
 
     return False
 
+def rotateArray(l):
+    """Given an n x n matri, rorate it by 90 degrees."""
+
+    rotatedArray = []
+
+    for x in range(len(l[0])):
+        row = []
+        for y in range(len(l)):
+            row.append(l[y][x])
+
+        rotatedArray.insert(0, row)
+
+    for tiems in rotatedArray:
+        l.pop(0)
+        l.append(tiems)
+
+def rotateArrayInPlace(l):
+    """Give an n x n matrix, rotate it in place."""
+
+
+l = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+rotateArray(l)
+print(l)
+
 
 
