@@ -1,4 +1,3 @@
-import random
 def flip(list):
     flippedlist = []
     for x in range(len(list)-1,-1,-1):
@@ -216,5 +215,20 @@ def findallduplicates(l):
 
     return dups
 
-print(findallduplicates([1,1,2,2,2,3,3,4,4,8,8,9]))
+
+def sortColors(l):
+    for x in range(len(l)-1):
+        minindex = x
+        minimum = l[x]
+        for y in range(x+1, len(l)):
+            if l[y] < l[x]:
+                minindex = y
+        l[x], l[minindex] = l[minindex],l[x]
+
+
+
+
+l = [2,2,1,1,0,0]
+sortColors(l)
+print(l)
 
