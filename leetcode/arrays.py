@@ -116,24 +116,6 @@ def fairCandySwap(l1, l2):
             if sum(l1without) + l2[y] == sum(l2without) + l1[x] :
                 return [l1[x],l2[y]]
 
-# def rob(nums):
-#     sums = []
-#
-#     if len(nums) == 0:
-#         return 0
-#
-#     elif len(nums) <=2 :
-#         return nums[0]
-#
-#     else:
-#         for x in range(len(nums)):
-#             sums.append(nums[x])
-#
-#             for y in range(x+2,len(nums),2):
-#                 sums[-1] += nums[y]
-#
-#
-#         return max(sums)
 
 def monotonicincreasing(l):
     for x in range(len(l)):
@@ -282,4 +264,38 @@ def subsets(l):
 
     return ssets
 
-print(subsets([1,2,3,4]))
+def inAllWords(char, l):
+    for words in l:
+        if char not in words:
+            return False
+
+    return True
+
+def replaceLetter(word, index):
+    newString = ""
+
+    for x in range(len(word)):
+        if x!=index:
+            newString += word[x]
+
+    return newString
+def removeFirstOccurence(char, l):
+    for x in range(len(l)):
+        for y in range(len(l[x])):
+            if l[x][y] == char:
+                l[x] = replaceLetter(l[x], y)
+                break
+
+
+def commonchars(l):
+    common = []
+    restOfList = l[1:]
+    for char in l[0]:
+        if inAllWords(char, restOfList):
+            removeFirstOccurence(char, restOfList)
+            common.append(char)
+
+    return common
+
+
+print(commonchars(["coool","looock","coook"]))
