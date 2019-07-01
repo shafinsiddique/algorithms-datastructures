@@ -426,4 +426,27 @@ def target_sum(l, target):
                 return [x,y]
 
     return []
+#
+# def firstLast(l, target):
+#     mid = l//2
+#
+#     if target < l[mid]:
+#         for x in range()
+
+def dailyTemperatures(l):
+    output = []
+    for x in range(len(l)):
+        warmerDay = 0
+        for y in range(x+1, len(l)):
+            if l[y] > l[x]:
+                warmerDay = y - x
+                break
+
+        output.append(warmerDay)
+    return output
+
+print(dailyTemperatures([73, 74, 75, 71, 69, 72, 76, 73]))
+
+
+
 

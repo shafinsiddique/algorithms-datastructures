@@ -225,10 +225,30 @@ def sortColors(l):
                 minindex = y
         l[x], l[minindex] = l[minindex],l[x]
 
+def productExceptSelf(nums):
+    output = []
+    queue = nums.copy()
+
+    for x in range(len(nums)):
+        temp = queue.pop(0)
+
+        product = 1
+
+        tempqueue = []
+        while queue:
+            item = queue.pop(0)
+            product *= item
+            tempqueue.append(item)
+
+        while tempqueue:
+            queue.append(tempqueue.pop(0))
+
+        queue.append(temp)
+        output.append(product)
+
+    return output
 
 
 
-l = [2,2,1,1,0,0]
-sortColors(l)
-print(l)
+print(productExceptSelf([1,2,3,4]))
 
