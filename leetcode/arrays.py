@@ -248,7 +248,26 @@ def productExceptSelf(nums):
 
     return output
 
+def subArraysInLength(l, length):
+    subarrays = []
+    for x in range(len(l)-length):
+        subarrays.append(l[x:x+length])
+
+    return subarrays
+
+def maximumSumTwoNoOverlap(a, l, m):
+    """A is a list."""
+
+    subArraysofLengthl = subArraysInLength(a, l)
+    subArraysofLengthM = subArraysInLength(a, m)
+
+    sums = []
+
+    for x in range(len(subArraysofLengthl)):
+        for y in range(len(subArraysofLengthM)):
+            sums.append(sum(subArraysofLengthM[y]) + sum(subArraysofLengthl[x]))
+
+    return max(sums)
 
 
-print(productExceptSelf([1,2,3,4]))
-
+print(maximumSumTwoNoOverlap([0,6,5,2,2,5,1,9,4], 1,2))
