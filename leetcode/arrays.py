@@ -270,4 +270,16 @@ def maximumSumTwoNoOverlap(a, l, m):
     return max(sums)
 
 
-print(maximumSumTwoNoOverlap([0,6,5,2,2,5,1,9,4], 1,2))
+def subsets(l):
+    """Return all possible subsets of the list."""
+
+    ssets = []
+
+    for x in range(len(l)):
+        for y in range(len(l), x-1, -1):
+            if l[x:y] not in ssets:
+                ssets.append(l[x:y])
+
+    return ssets
+
+print(subsets([1,2,3,4]))
