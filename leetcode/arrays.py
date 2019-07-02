@@ -1,3 +1,4 @@
+import math
 def flip(list):
     flippedlist = []
     for x in range(len(list)-1,-1,-1):
@@ -340,6 +341,40 @@ def firstLastArray(nums, target):
             counter2 +=1
 
     return output
+def fib(n):
+    if n <= 1:
+        return 1
+
+    else:
+        return fib(n-1) + fib(n-2)
+
+def discreteTest(n):
+    ls = fib(n-1) * fib(n+1)-(fib(n)*fib(n))
+
+    rs = math.pow(-1,n+1)
+
+    if ls != rs:
+        print("found")
 
 
 
+def wiggleSort(l):
+    for x in range(0, len(l),2):
+        min = l[x]
+        for y in range(x-1, len(l)):
+            if l[y] < min:
+                min = l[y]
+                l[x], l[y] = l[y],l[x]
+
+def wiggleSort2(l):
+    l.sort()
+
+    for x in range(1, len(l)-1, 2):
+        l[x], l[x+1] = l[x+1], l[x]
+
+
+l = [1,2,3,4,5,6,7,8]
+
+wiggleSort2(l)
+
+print(l)
