@@ -297,5 +297,49 @@ def commonchars(l):
 
     return common
 
+def firstLastArray(nums, target):
 
-print(commonchars(["coool","looock","coook"]))
+    if nums == []:
+        return [-1,-1]
+    midPoint = len(nums) // 2
+    output = [-1,-1]
+    if target < nums[midPoint]:
+        for x in range(midPoint):
+            if nums[x] == target:
+                output[0] = x
+                output[1] = x
+
+                for y in range(x+1, midPoint):
+                    if nums[y] == target:
+                        output[1] = y
+
+                break
+
+    elif target > nums[midPoint]:
+        for x in range(midPoint, len(nums)):
+            if nums[x] == target:
+                output[0] = x
+                output[1] = x
+
+                for y in range(x+1, len(nums)):
+                    if nums[y] == target:
+                        output[1] = y
+
+                break
+
+    else:
+        counter1 = midPoint
+        counter2 = midPoint
+
+        while nums[counter1] == target and counter1 >= 0:
+            output[0] = counter1
+            counter1 -=1
+
+        while counter2 < len(nums) and nums[counter2] == target:
+            output[1] = counter2
+            counter2 +=1
+
+    return output
+
+
+
