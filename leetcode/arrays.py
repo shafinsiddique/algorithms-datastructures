@@ -373,8 +373,33 @@ def wiggleSort2(l):
         l[x], l[x+1] = l[x+1], l[x]
 
 
-l = [1,2,3,4,5,6,7,8]
+def roomAvailable(room, starttime, endtime):
+    for meetings in room:
+        meetingStartTime = meetings[0]
+        meetingEndTime = meetings[1]
 
-wiggleSort2(l)
+        if starttime >= meetingStartTime and starttime <= meetingEndTime:
+            return False
 
-print(l)
+    return True
+
+def meetingRooms(l):
+    """Given a list of meeting times, figure out the minimum rooms we need."""
+
+    rooms = []
+    for meetingTimes in l:
+        starttime = meetingTimes[0]
+        endTime = meetingTimes[1]
+        roomFound = False
+        for room in rooms:
+            if roomAvailable(room, starttime, endTime):
+                room.append((starttime, endTime))
+                roomFound = True
+                break
+
+        if not roomFound:
+            rooms.append([(starttime, endTime)])
+
+    return len(rooms)
+
+print(meetingRooms([[15,30],[5,10],[7,8]]))
