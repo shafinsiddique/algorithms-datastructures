@@ -402,4 +402,80 @@ def meetingRooms(l):
 
     return len(rooms)
 
-print(meetingRooms([[15,30],[5,10],[7,8]]))
+def firstMissingPositive(nums):
+        nums.sort()
+
+        if nums == []:
+            return 1
+
+        counter = 0
+        for x in range(len(nums) - 1):
+            if nums[x] > 0:
+                counter += 1
+
+                if nums[x] != counter:
+                    return counter
+
+        if counter == 0:
+            return 1
+
+        else:
+            return nums[-1] + 1
+
+
+def isPrime(n):
+    if n <= 3:
+        return True
+
+    for x in range(3, n, 2):
+        if n % x == 0:
+            return False
+
+    return True
+
+
+def countPrimes(n):
+
+    if n <= 2:
+        return 0
+
+    counter = 1
+
+    for x in range(3, n, 2):
+        if isPrime(x):
+            counter += 1
+
+    return counter
+
+def countPrimes3(n):
+    if n <= 2:
+        return 0
+
+    elif n == 3:
+        return 1
+
+
+
+def isPrime2(n):
+    for x in range(2,n):
+        if n % x == 0:
+            return True
+
+    return False
+def countPrime2(n):
+    counter = 0
+
+    for x in range(2, n):
+        if isPrime2(x):
+            counter += 1
+
+    return counter
+
+
+
+def lessthan40(l):
+    for items in l:
+        if items < 40:
+            print("<40")
+
+lessthan40([1,2,3,4,41,91,3,4,5])
