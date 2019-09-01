@@ -164,6 +164,7 @@ class Tree:
         """Delete the given item from the tree."""
 
 
+print("hello world.")
 
 t = Tree(1, [Tree(2,[]), Tree(9,[Tree(4,[])])])
 print(t)
