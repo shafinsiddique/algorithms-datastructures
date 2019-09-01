@@ -44,6 +44,8 @@ class LinkedList:
         else:
             self._first = self._first.next
 
+    def insert(self, index, item):
+
 l = LinkedList()
 l.add(2)
 l.add(3)
