@@ -45,6 +45,7 @@ class LinkedList:
             self._first = self._first.next
 
     def insert(self, index, item):
+        pass
 
 l = LinkedList()
 l.add(2)

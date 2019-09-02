@@ -19,15 +19,43 @@ def rangeSumofBST(binarySearchTree: BST.BinarySearchTree, start, end):
 
         return s
 
+def merge(bst1: BST.BinarySearchTree, bst2: BST.BinarySearchTree):
+    """Merge two binary trees."""
 
-bst = BST.BinarySearchTree(7)
+    if bst1.isEmpty() and bst2.isEmpty():
+        return BST.BinarySearchTree(None)
+
+    elif bst1.isEmpty():
+        return bst2
+
+    elif bst2.isEmpty():
+        return bst1
+
+    else:
+        newTree = BST.BinarySearchTree(bst1._root + bst2._root)
+
+        newTree._left = merge(bst1._left, bst2._left)
+
+        newTree._right = merge(bst1._right, bst2._right)
+
+        return newTree
+
+
+
+bst1 = BST.BinarySearchTree(1)
 left = BST.BinarySearchTree(3)
-left._left = BST.BinarySearchTree(2)
-left._right = BST.BinarySearchTree(5)
-right = BST.BinarySearchTree(11)
-right._left = BST.BinarySearchTree(9)
-right._right = BST.BinarySearchTree(13)
-bst._left = left
-bst._right = right
-print(bst)
-print(rangeSumofBST(bst, 3, 7))
+left._left = BST.BinarySearchTree(5)
+right = BST.BinarySearchTree(2)
+
+bst1._left = left
+bst1._right = right
+
+bst2 = BST.BinarySearchTree(2)
+left1 = BST.BinarySearchTree(1)
+left1._right = BST.BinarySearchTree(4)
+right1 = BST.BinarySearchTree(3)
+right1._right = BST.BinarySearchTree(7)
+bst2._left = left1
+bst2._right = right1
+
+print(merge(bst1, bst2))
