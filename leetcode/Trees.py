@@ -40,6 +40,23 @@ def merge(bst1: BST.BinarySearchTree, bst2: BST.BinarySearchTree):
 
         return newTree
 
+def search(bst: BST.BinarySearchTree, item):
+    """Search in a Binary Search Tree."""
+
+    if bst.isEmpty():
+        return
+
+    else:
+        if item < bst._root:
+            return search(bst._left, item)
+
+        elif item == bst._root:
+            return bst
+
+        else:
+            return search(bst._right, item)
+
+
 
 
 bst1 = BST.BinarySearchTree(1)
@@ -58,4 +75,6 @@ right1._right = BST.BinarySearchTree(7)
 bst2._left = left1
 bst2._right = right1
 
-print(merge(bst1, bst2))
+bt = merge(bst1, bst2)
+print(bt)
+print(search(bt, 5))
