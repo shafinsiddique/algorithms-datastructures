@@ -68,6 +68,8 @@ def preOrderTraversal(tree: BST.BinarySearchTree):
         return values
 
 def unvaluedBinaryTree(tree: BST.BinarySearchTree):
+    """A binary tree is unvalued if all its values are equal. Return if
+    a given tree is an unvalued binary tree."""
     if tree.isEmpty() or tree.isSizeOne():
         return True
 
@@ -86,6 +88,19 @@ def unvaluedBinaryTree(tree: BST.BinarySearchTree):
 
         return True
 
+def maximumDepth(tree: tree.Tree):
+    """Find the height of the tree."""
+
+    if tree.isEmpty():
+        return 0
+
+    else:
+        heights = []
+
+        for subtrees in tree._subtrees:
+            heights.append(subtrees.height() + 1)
+
+        return max(heights)
 
 
 
@@ -107,6 +122,6 @@ right1._right = BST.BinarySearchTree(1)
 bst2._left = left1
 bst2._right = right1
 
-bt = merge(bst1, bst2)
-print(bt)
-print(unvaluedBinaryTree(bst2))
+t = tree.Tree(1, [tree.Tree(2, []), tree.Tree(9, [tree.Tree(4, [])])])
+print(t)
+print(maximumDepth(t))

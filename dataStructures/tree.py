@@ -6,6 +6,9 @@ class Tree:
     def __str__(self):
         return self._print()
 
+    def isEmpty(self):
+        return self._root is None
+
     def _print(self, depth=0):
         if self._root is None:
             return "emptytree"
