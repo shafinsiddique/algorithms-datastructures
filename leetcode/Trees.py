@@ -56,6 +56,16 @@ def search(bst: BST.BinarySearchTree, item):
         else:
             return search(bst._right, item)
 
+def preOrderTraversal(tree: BST.BinarySearchTree):
+    if tree.isEmpty():
+        return []
+
+    else:
+        values = [tree._root]
+        values.extend(preOrderTraversal(tree._left))
+        values.extend(preOrderTraversal(tree._right))
+
+        return values
 
 
 
@@ -77,4 +87,4 @@ bst2._right = right1
 
 bt = merge(bst1, bst2)
 print(bt)
-print(search(bt, 5))
+print(preOrderTraversal(bt))
