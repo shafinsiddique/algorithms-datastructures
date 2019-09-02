@@ -8,7 +8,7 @@ class Tree:
 
     def _print(self, depth=0):
         if self._root is None:
-            return ""
+            return "emptytree"
 
         else:
             s = depth*" " + str(self._root) + '\n'
@@ -144,7 +144,6 @@ class Tree:
             self._root = None
 
             return temp
-
         else:
             return self._subtrees[0].leftmostleaf()
 
@@ -163,10 +162,28 @@ class Tree:
     def delete_item(self, item):
         """Delete the given item from the tree."""
 
+        if self._root is None:
+            return False
 
-print("hello world.")
+        elif self._root == item:
+            self.delete_root2()
+            return True
+        else:
+            for subtrees in self._subtrees:
+                deleted = subtrees.delete_item(item)
+                if deleted and subtrees._root is None:
+                    self._subtrees.remove(subtrees)
+                    return True
+
+                elif deleted:
+                    return True
+
+            return False
+
+
+
 
 t = Tree(1, [Tree(2,[]), Tree(9,[Tree(4,[])])])
 print(t)
-t.delete_root2()
+t.delete_item(9)
 print(t)
