@@ -208,18 +208,18 @@ class BinarySearchTree:
             print(self._root)
             self._right.inOrderTraversal()
 
-
-bst = BinarySearchTree(7)
-left = BinarySearchTree(3)
-left._left = BinarySearchTree(2)
-left._right = BinarySearchTree(5)
-right = BinarySearchTree(11)
-right._left = BinarySearchTree(9)
-right._right = BinarySearchTree(13)
-bst._left = left
-bst._right = right
-print(bst)
-bst.rotate_right()
-bst.preOrderTraversal()
-print()
-bst.inOrderTraversal()
+if __name__ == "__main__":
+    bst = BinarySearchTree(7)
+    left = BinarySearchTree(3)
+    left._left = BinarySearchTree(2)
+    left._right = BinarySearchTree(5)
+    right = BinarySearchTree(11)
+    right._left = BinarySearchTree(9)
+    right._right = BinarySearchTree(13)
+    bst._left = left
+    bst._right = right
+    print(bst)
+    bst.rotate_right()
+    bst.preOrderTraversal()
+    print()
+    bst.inOrderTraversal()

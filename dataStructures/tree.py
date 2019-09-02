@@ -182,8 +182,8 @@ class Tree:
 
 
 
-
-t = Tree(1, [Tree(2,[]), Tree(9,[Tree(4,[])])])
-print(t)
-t.delete_item(9)
-print(t)
+if __name__ == "__main__":
+    t = Tree(1, [Tree(2,[]), Tree(9,[Tree(4,[])])])
+    print(t)
+    t.delete_item(9)
+    print(t)
