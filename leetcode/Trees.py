@@ -67,24 +67,46 @@ def preOrderTraversal(tree: BST.BinarySearchTree):
 
         return values
 
+def unvaluedBinaryTree(tree: BST.BinarySearchTree):
+    if tree.isEmpty() or tree.isSizeOne():
+        return True
+
+    elif tree._left.isEmpty():
+        return tree._root == tree._right._root
+
+    elif tree._right.isEmpty():
+        return tree._root == tree._left._root
+
+    else:
+        if tree._root != tree._left._root or tree._root != tree._right._root:
+            return False
+
+        if not unvaluedBinaryTree(tree._left) or not unvaluedBinaryTree(tree._right):
+            return False
+
+        return True
+
+
+
+
 
 
 bst1 = BST.BinarySearchTree(1)
-left = BST.BinarySearchTree(3)
-left._left = BST.BinarySearchTree(5)
-right = BST.BinarySearchTree(2)
+left = BST.BinarySearchTree(1)
+left._left = BST.BinarySearchTree(1)
+right = BST.BinarySearchTree(1)
 
 bst1._left = left
 bst1._right = right
 
-bst2 = BST.BinarySearchTree(2)
+bst2 = BST.BinarySearchTree(1)
 left1 = BST.BinarySearchTree(1)
-left1._right = BST.BinarySearchTree(4)
-right1 = BST.BinarySearchTree(3)
-right1._right = BST.BinarySearchTree(7)
+left1._right = BST.BinarySearchTree(1)
+right1 = BST.BinarySearchTree(1)
+right1._right = BST.BinarySearchTree(1)
 bst2._left = left1
 bst2._right = right1
 
 bt = merge(bst1, bst2)
 print(bt)
-print(preOrderTraversal(bt))
+print(unvaluedBinaryTree(bst2))
