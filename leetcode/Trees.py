@@ -104,24 +104,43 @@ def maximumDepth(tree: tree.Tree):
 
 
 
+def getAllValuesFromBST(bst: BST.BinarySearchTree):
+    """Return all values of the bst in sorted order"""
+
+    if bst.isEmpty():
+        return []
+
+    else:
+        values = []
+
+        values.extend(getAllValuesFromBST(bst._left))
+        values.append(bst._root)
+        values.extend(getAllValuesFromBST(bst._right))
+
+        return values
+def increasingOrderSearchTree(bst: BST.BinarySearchTree):
+    """Rearrange it in order so that each tree has no left subtree and only one right subtree."""
+
+    values = getAllValuesFromBST(bst)
+    newTree = BST.BinarySearchTree(0)
+    newTreeAlias = newTree
+
+    for value in values:
+        t = BST.BinarySearchTree(value)
+        newTreeAlias._right = t
+        newTreeAlias = t
+
+    return newTree._right
 
 
-bst1 = BST.BinarySearchTree(1)
-left = BST.BinarySearchTree(1)
-left._left = BST.BinarySearchTree(1)
-right = BST.BinarySearchTree(1)
-
-bst1._left = left
-bst1._right = right
-
-bst2 = BST.BinarySearchTree(1)
-left1 = BST.BinarySearchTree(1)
-left1._right = BST.BinarySearchTree(1)
-right1 = BST.BinarySearchTree(1)
-right1._right = BST.BinarySearchTree(1)
-bst2._left = left1
-bst2._right = right1
-
-t = tree.Tree(1, [tree.Tree(2, []), tree.Tree(9, [tree.Tree(4, [])])])
-print(t)
-print(maximumDepth(t))
+bst = BST.BinarySearchTree(7)
+left = BST.BinarySearchTree(3)
+left._left = BST.BinarySearchTree(2)
+left._right = BST.BinarySearchTree(5)
+right = BST.BinarySearchTree(11)
+right._left = BST.BinarySearchTree(9)
+right._right = BST.BinarySearchTree(13)
+bst._left = left
+bst._right = right
+print(bst)
+print(increasingOrderSearchTree(bst))
