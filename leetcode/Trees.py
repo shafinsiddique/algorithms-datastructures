@@ -1,7 +1,7 @@
-from dataStructures import BST
+from dataStructures.BST import BinarySearchTree
 from dataStructures import tree
 
-def rangeSumofBST(binarySearchTree: BST.BinarySearchTree, start, end):
+def rangeSumofBST(binarySearchTree: BinarySearchTree, start, end):
     """LeetCode Question ID #938."""
 
     if binarySearchTree.isEmpty():
@@ -19,11 +19,11 @@ def rangeSumofBST(binarySearchTree: BST.BinarySearchTree, start, end):
 
         return s
 
-def merge(bst1: BST.BinarySearchTree, bst2: BST.BinarySearchTree):
+def merge(bst1: BinarySearchTree, bst2: BinarySearchTree):
     """Merge two binary trees."""
 
     if bst1.isEmpty() and bst2.isEmpty():
-        return BST.BinarySearchTree(None)
+        return BinarySearchTree(None)
 
     elif bst1.isEmpty():
         return bst2
@@ -32,7 +32,7 @@ def merge(bst1: BST.BinarySearchTree, bst2: BST.BinarySearchTree):
         return bst1
 
     else:
-        newTree = BST.BinarySearchTree(bst1._root + bst2._root)
+        newTree = BinarySearchTree(bst1._root + bst2._root)
 
         newTree._left = merge(bst1._left, bst2._left)
 
@@ -40,7 +40,7 @@ def merge(bst1: BST.BinarySearchTree, bst2: BST.BinarySearchTree):
 
         return newTree
 
-def search(bst: BST.BinarySearchTree, item):
+def search(bst:BinarySearchTree, item):
     """Search in a Binary Search Tree."""
 
     if bst.isEmpty():
@@ -56,7 +56,7 @@ def search(bst: BST.BinarySearchTree, item):
         else:
             return search(bst._right, item)
 
-def preOrderTraversal(tree: BST.BinarySearchTree):
+def preOrderTraversal(tree: BinarySearchTree):
     if tree.isEmpty():
         return []
 
@@ -67,7 +67,7 @@ def preOrderTraversal(tree: BST.BinarySearchTree):
 
         return values
 
-def unvaluedBinaryTree(tree: BST.BinarySearchTree):
+def unvaluedBinaryTree(tree: BinarySearchTree):
     """A binary tree is unvalued if all its values are equal. Return if
     a given tree is an unvalued binary tree."""
     if tree.isEmpty() or tree.isSizeOne():
@@ -104,7 +104,7 @@ def maximumDepth(tree: tree.Tree):
 
 
 
-def getAllValuesFromBST(bst: BST.BinarySearchTree):
+def getAllValuesFromBST(bst: BinarySearchTree):
     """Return all values of the bst in sorted order"""
 
     if bst.isEmpty():
@@ -118,29 +118,48 @@ def getAllValuesFromBST(bst: BST.BinarySearchTree):
         values.extend(getAllValuesFromBST(bst._right))
 
         return values
-def increasingOrderSearchTree(bst: BST.BinarySearchTree):
+def increasingOrderSearchTree(bst: BinarySearchTree):
     """Rearrange it in order so that each tree has no left subtree and only one right subtree."""
 
     values = getAllValuesFromBST(bst)
-    newTree = BST.BinarySearchTree(0)
+    newTree = BinarySearchTree(0)
     newTreeAlias = newTree
 
     for value in values:
-        t = BST.BinarySearchTree(value)
+        t = BinarySearchTree(value)
         newTreeAlias._right = t
         newTreeAlias = t
 
     return newTree._right
 
+def getLeafs(bst: BinarySearchTree):
+    if bst.isEmpty():
+        return []
 
-bst = BST.BinarySearchTree(7)
-left = BST.BinarySearchTree(3)
-left._left = BST.BinarySearchTree(2)
-left._right = BST.BinarySearchTree(5)
-right = BST.BinarySearchTree(11)
-right._left = BST.BinarySearchTree(9)
-right._right = BST.BinarySearchTree(13)
+    elif bst.isSizeOne():
+        return [bst._root]
+
+    else:
+        leaves = []
+
+        leaves.extend(getLeafs(bst._left))
+        leaves.extend(getLeafs(bst._right))
+
+        return leaves
+def leafValueSequence(bst: BinarySearchTree, bst1: BinarySearchTree):
+    """Return if the leaf value lists of two binary search trees are the same."""
+
+    return getLeafs(bst) == getLeafs(bst1)
+
+
+bst = BinarySearchTree(7)
+left = BinarySearchTree(3)
+left._left = BinarySearchTree(2)
+left._right = BinarySearchTree(5)
+right = BinarySearchTree(11)
+right._left = BinarySearchTree(9)
+right._right = BinarySearchTree(13)
 bst._left = left
 bst._right = right
 print(bst)
-print(increasingOrderSearchTree(bst))
+print(getLeafs(bst))
