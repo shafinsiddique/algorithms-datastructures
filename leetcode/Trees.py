@@ -151,6 +151,51 @@ def leafValueSequence(bst: BinarySearchTree, bst1: BinarySearchTree):
 
     return getLeafs(bst) == getLeafs(bst1)
 
+def getValuesInRange(bst: BinarySearchTree, start, end ):
+    if bst.isEmpty():
+        return []
+
+    else:
+        values = []
+
+        if not start <= bst._root <= end:
+            values.extend(getValuesInRange(bst._right, start, end))
+        else:
+            values.append(bst._root)
+
+            values.extend(getValuesInRange(bst._left, start, end))
+            values.extend(getValuesInRange(bst._right, start, end))
+
+        return values
+def trim_bst(bst: BinarySearchTree, start, end):
+    values = getValuesInRange(bst, start, end)
+    newTree = BinarySearchTree(values.pop(0))
+    for value in values:
+        newTree.insert(value)
+
+    bst._root = newTree._root
+    bst._left = newTree._left
+    bst._right = newTree._right
+
+def helper(bst: BinarySearchTree, start, end):
+    if not bst._root:
+        return BinarySearchTree(None)
+
+    if bst._root > end:
+        return helper(bst._left, start, end)
+
+    elif bst._root < start:
+        return helper(bst._right, start, end)
+
+    else:
+        bst._left = helper(bst._left, start, end)
+        bst._right = helper(bst._right, start, end)
+
+        return bst
+
+def trim_bst2(bst: BinarySearchTree, start, end):
+    return helper(bst, start, end)
+
 
 bst = BinarySearchTree(7)
 left = BinarySearchTree(3)
@@ -162,4 +207,5 @@ right._right = BinarySearchTree(13)
 bst._left = left
 bst._right = right
 print(bst)
-print(getLeafs(bst))
+print(trim_bst2(bst, 5,7))
+
