@@ -197,7 +197,7 @@ def trim_bst2(bst: BinarySearchTree, start, end):
     return helper(bst, start, end)
 
 def levelOrderTraversal(tree: Tree):
-    """Depth first search is a Queue."""
+    """breadth first search is a Queue."""
     toVisit = [[tree]]
     roots = [[tree._root]]
     while toVisit:
@@ -217,21 +217,72 @@ def levelOrderTraversal(tree: Tree):
 
     return roots
 
+def levelOrderTraversal2(tree: Tree):
+    """breadth first search is a Queue. """
+
+    toVisit = [[tree]]
+    roots = [[tree._root]]
+
+    while toVisit:
+        listOfTrees = toVisit.pop(0)
+        newTreesList = []
+        newRoots = []
+        for tree in listOfTrees:
+            newTreesList.extend(tree._subtrees)
+
+            for subtree in tree._subtrees:
+                newRoots.append(subtree._root)
+
+        if newTreesList:
+            toVisit.append(newTreesList)
+            roots.append(newRoots)
+
+        else:
+             break
+
+    return roots
+
+def averageOfLevelsInBinaryTree(bst: BinarySearchTree):
+    toVisit = [[bst]]
+    averages = []
+
+    while toVisit:
+        listOfTrees = toVisit.pop(0)
+        newList =[]
+        sum = 0
+        for trees in listOfTrees:
+            sum += trees._root
+
+            if not trees._left.isEmpty():
+                newList.append(trees._left)
+
+            if not trees._right.isEmpty():
+                newList.append(trees._right)
+
+        averages.append(sum / len(listOfTrees))
+
+        if newList == []:
+            break
+
+        else:
+            toVisit.append(newList)
+
+    return averages
 #
-# bst = BinarySearchTree(7)
-# left = BinarySearchTree(3)
-# left._left = BinarySearchTree(2)
-# left._right = BinarySearchTree(5)
-# right = BinarySearchTree(11)
-# right._left = BinarySearchTree(9)
-# right._right = BinarySearchTree(13)
-# bst._left = left
-# bst._right = right
-# print(bst)
-# print(trim_bst2(bst, 5,7))
-lt = Tree(2, [Tree(4, []), Tree(5, [])])
-rt = Tree(3, [Tree(6, []), Tree(7, []), Tree(8, []), Tree(9, []),\
-                          Tree(10, [])])
-t = Tree(1, [lt, rt])
-print(levelOrderTraversal(t))
+bst = BinarySearchTree(7)
+left = BinarySearchTree(3)
+left._left = BinarySearchTree(2)
+left._right = BinarySearchTree(5)
+right = BinarySearchTree(11)
+right._left = BinarySearchTree(9)
+right._right = BinarySearchTree(13)
+bst._left = left
+bst._right = right
+print(bst)
+print(averageOfLevelsInBinaryTree(bst))
+# lt = Tree(2, [Tree(4, []), Tree(5, [])])
+# rt = Tree(3, [Tree(6, []), Tree(7, []), Tree(8, []), Tree(9, []),\
+#                           Tree(10, [Tree(12,[])])])
+# t = Tree(1, [lt, rt])
+
 
