@@ -1,5 +1,5 @@
 from dataStructures.BST import BinarySearchTree
-from dataStructures import tree
+from dataStructures.tree import Tree
 
 def rangeSumofBST(binarySearchTree: BinarySearchTree, start, end):
     """LeetCode Question ID #938."""
@@ -88,7 +88,7 @@ def unvaluedBinaryTree(tree: BinarySearchTree):
 
         return True
 
-def maximumDepth(tree: tree.Tree):
+def maximumDepth(tree: Tree):
     """Find the height of the tree."""
 
     if tree.isEmpty():
@@ -196,16 +196,42 @@ def helper(bst: BinarySearchTree, start, end):
 def trim_bst2(bst: BinarySearchTree, start, end):
     return helper(bst, start, end)
 
+def levelOrderTraversal(tree: Tree):
+    """Depth first search is a Queue."""
+    toVisit = [[tree]]
+    roots = [[tree._root]]
+    while toVisit:
+        listOfTrees = toVisit.pop(0)
+        newList = []
+        newRoots = []
+        for trees in listOfTrees:
+            newList.extend(trees._subtrees)
+            for subtrees in trees._subtrees:
+                newRoots.append(subtrees._root)
 
-bst = BinarySearchTree(7)
-left = BinarySearchTree(3)
-left._left = BinarySearchTree(2)
-left._right = BinarySearchTree(5)
-right = BinarySearchTree(11)
-right._left = BinarySearchTree(9)
-right._right = BinarySearchTree(13)
-bst._left = left
-bst._right = right
-print(bst)
-print(trim_bst2(bst, 5,7))
+        if newList == []:
+            break
+        else:
+            roots.append(newRoots)
+            toVisit.append(newList)
+
+    return roots
+
+#
+# bst = BinarySearchTree(7)
+# left = BinarySearchTree(3)
+# left._left = BinarySearchTree(2)
+# left._right = BinarySearchTree(5)
+# right = BinarySearchTree(11)
+# right._left = BinarySearchTree(9)
+# right._right = BinarySearchTree(13)
+# bst._left = left
+# bst._right = right
+# print(bst)
+# print(trim_bst2(bst, 5,7))
+lt = Tree(2, [Tree(4, []), Tree(5, [])])
+rt = Tree(3, [Tree(6, []), Tree(7, []), Tree(8, []), Tree(9, []),\
+                          Tree(10, [])])
+t = Tree(1, [lt, rt])
+print(levelOrderTraversal(t))
 
