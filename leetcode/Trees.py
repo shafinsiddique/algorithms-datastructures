@@ -270,7 +270,26 @@ def averageOfLevelsInBinaryTree(bst: BinarySearchTree):
     return averages
 
 def sumOfRootToLeaf(bst: BinarySearchTree):
-    pass
+    """For all leaves in the tree, return the sum of the values of the root to the leaf.
+    """
+
+    if bst.isEmpty():
+        return 0
+
+    elif bst.isSizeOne():
+        return [bst._root]
+
+    else:
+        leftsum = sumOfRootToLeaf(bst._left)
+        rightsum = sumOfRootToLeaf(bst._right)
+        sum =  []
+        for items in leftsum:
+            sum.append(items + bst._root)
+
+        for items in rightsum:
+            sum.append(items + bst._root)
+
+        return sum
 #
 bst = BinarySearchTree(7)
 left = BinarySearchTree(3)
@@ -282,7 +301,7 @@ right._right = BinarySearchTree(13)
 bst._left = left
 bst._right = right
 print(bst)
-print(averageOfLevelsInBinaryTree(bst))
+print(sumOfRootToLeaf(bst))
 # lt = Tree(2, [Tree(4, []), Tree(5, [])])
 # rt = Tree(3, [Tree(6, []), Tree(7, []), Tree(8, []), Tree(9, []),\
 #                           Tree(10, [Tree(12,[])])])
