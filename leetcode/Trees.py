@@ -338,6 +338,21 @@ def convertbsttoGreaterTree(bst: BinarySearchTree):
             bst._root += bst._right._root
 
 
+def treeToString(bst: BinarySearchTree):
+    if bst.isEmpty():
+        return ""
+
+    elif bst.isSizeOne():
+        return  str(bst._root)
+
+    else:
+        s = str(bst._root) + "("
+
+        s += treeToString(bst._left) + ")" + "("
+
+        s += treeToString(bst._right) + ")"
+
+        return s
 bst = BinarySearchTree(7)
 left = BinarySearchTree(3)
 left._left = BinarySearchTree(2)
@@ -347,9 +362,7 @@ right._left = BinarySearchTree(9)
 right._right = BinarySearchTree(13)
 bst._left = left
 bst._right = right
-print(bst)
-convertbsttoGreaterTree(bst)
-print(bst)
+print(treeToString(bst))
 # lt = Tree(2, [Tree(4, []), Tree(5, [])])
 # rt = Tree(3, [Tree(6, []), Tree(7, []), Tree(8, []), Tree(9, []),\
 #                           Tree(10, [Tree(12,[])])])
