@@ -290,6 +290,18 @@ def sumOfRootToLeaf(bst: BinarySearchTree):
             sum.append(items + bst._root)
 
         return sum
+
+def invertBinaryTree(bst: BinarySearchTree):
+    """Invert this binary tree."""
+
+    if bst.isEmpty() or bst.isSizeOne():
+        return
+
+    else:
+        bst._left, bst._right = bst._right, bst._left
+
+        invertBinaryTree(bst._left)
+        invertBinaryTree(bst._right)
 #
 bst = BinarySearchTree(7)
 left = BinarySearchTree(3)
@@ -301,7 +313,8 @@ right._right = BinarySearchTree(13)
 bst._left = left
 bst._right = right
 print(bst)
-print(sumOfRootToLeaf(bst))
+invertBinaryTree(bst)
+print(bst)
 # lt = Tree(2, [Tree(4, []), Tree(5, [])])
 # rt = Tree(3, [Tree(6, []), Tree(7, []), Tree(8, []), Tree(9, []),\
 #                           Tree(10, [Tree(12,[])])])
