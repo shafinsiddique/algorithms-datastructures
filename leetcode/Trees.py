@@ -268,6 +268,9 @@ def averageOfLevelsInBinaryTree(bst: BinarySearchTree):
             toVisit.append(newList)
 
     return averages
+
+def sumOfRootToLeaf(bst: BinarySearchTree):
+    pass
 #
 bst = BinarySearchTree(7)
 left = BinarySearchTree(3)

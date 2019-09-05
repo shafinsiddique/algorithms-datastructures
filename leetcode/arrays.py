@@ -1,4 +1,5 @@
 import math
+import collections
 def flip(list):
     flippedlist = []
     for x in range(len(list)-1,-1,-1):
@@ -423,59 +424,18 @@ def firstMissingPositive(nums):
             return nums[-1] + 1
 
 
-def isPrime(n):
-    if n <= 3:
-        return True
+def deckRevealedIncreasingOrder(deck):
+    simulator = [x for x in range(len(deck))]
+    retList = [None]*len(deck)
+    sortedDeck = sorted(deck)
 
-    for x in range(3, n, 2):
-        if n % x == 0:
-            return False
+    for items in sortedDeck:
+        retList[simulator.pop(0)] = items
 
-    return True
+        if simulator:
+            simulator.append(simulator.pop(0))
 
+    return retList
 
-def countPrimes(n):
+print(deckRevealedIncreasingOrder([17,13,11,2,3,5,7]))
 
-    if n <= 2:
-        return 0
-
-    counter = 1
-
-    for x in range(3, n, 2):
-        if isPrime(x):
-            counter += 1
-
-    return counter
-
-def countPrimes3(n):
-    if n <= 2:
-        return 0
-
-    elif n == 3:
-        return 1
-
-
-
-def isPrime2(n):
-    for x in range(2,n):
-        if n % x == 0:
-            return True
-
-    return False
-def countPrime2(n):
-    counter = 0
-
-    for x in range(2, n):
-        if isPrime2(x):
-            counter += 1
-
-    return counter
-
-
-
-def lessthan40(l):
-    for items in l:
-        if items < 40:
-            print("<40")
-
-lessthan40([1,2,3,4,41,91,3,4,5])
