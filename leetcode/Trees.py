@@ -302,7 +302,31 @@ def invertBinaryTree(bst: BinarySearchTree):
 
         invertBinaryTree(bst._left)
         invertBinaryTree(bst._right)
-#
+
+def twoSumIV(bst: BinarySearchTree, target):
+    """Given a binary search tree, return True if there exists two numbers that add up to target."""
+
+    if bst.isEmpty() or bst.isSizeOne():
+        return False
+
+    else:
+        values = getAllValuesFromBST(bst)
+        l = 0
+        r = len(values)-1
+
+        while l < r:
+            if values[l] + values[r] == target:
+                return True ### Remember this algorithm.
+
+            elif values[l] + values[r] < target:
+                l += 1
+
+            else:
+                r -= 1
+
+        return False
+
+
 bst = BinarySearchTree(7)
 left = BinarySearchTree(3)
 left._left = BinarySearchTree(2)
@@ -313,8 +337,7 @@ right._right = BinarySearchTree(13)
 bst._left = left
 bst._right = right
 print(bst)
-invertBinaryTree(bst)
-print(bst)
+print(twoSumIV(bst, 5))
 # lt = Tree(2, [Tree(4, []), Tree(5, [])])
 # rt = Tree(3, [Tree(6, []), Tree(7, []), Tree(8, []), Tree(9, []),\
 #                           Tree(10, [Tree(12,[])])])
