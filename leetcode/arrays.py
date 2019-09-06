@@ -451,5 +451,14 @@ def findAllDuplicates(nums):
     return final
 
 
-print(findAllDuplicates([4,3,2,7,8,2,3,1]))
+def reverseList(nums):
+    """Reverse the list."""
+
+    for x in range(len(nums)//2):
+        nums[x], nums[len(nums)-1-x] = nums[len(nums)-1-x], nums[x]
+
+
+nums = [1,2,3,4,5,6,109238]
+reverseList(nums)
+print(nums)
 
