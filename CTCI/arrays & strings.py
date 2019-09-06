@@ -91,6 +91,71 @@ def zeroMatrix(l):
         for x in range(len(l)):
             l[x][cols] = 0
 
+def isUnique2(s: str):
+    """Implement an algorithm to determine if a string has all unique characters.
+
+    What if you can't use addiitonal data strucutres??"""
+
+    for x in range(len(s)):
+        if s[x] in s[x+1:]:
+            return False
+
+    return True
+
+def isUnqiue3(s: str):
+    items = {}
+
+    for item in s:
+        if item in items:
+            return False
+
+        else:
+            items[item] = None
+
+    return True
+
+def checkPermutation(s1, s2):
+    """
+    Given two strings, write an algorithm to determine if one is a permutation of the other.
+
+    return true if s1 is a permutation of s2.
+    """
+
+    items = {}
+
+    for letter in s2:
+        if letter in items:
+            items[letter] += 1
+
+        else:
+            items[letter] = 0
+    items2 = {}
+    for letter in s1:
+        if letter in items2:
+            items2[letter] += 1
+
+        else:
+            items2[letter] = 0
+
+    return items == items2
+
+def urlify2(s: str):
+    """Write a method to replaces all spaces in a string with %20."""
+
+    newString = s.strip()
+
+    newString = newString.replace(" ", "%20")
+
+    return newString
+
+
+def oneAway()
+
+print(checkPermutation("abc","acb"))
+print(urlify2("Mr John Smith         "))
+
+
+
 
 
 
