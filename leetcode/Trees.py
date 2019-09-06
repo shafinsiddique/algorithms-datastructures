@@ -343,14 +343,14 @@ def treeToString(bst: BinarySearchTree):
         return ""
 
     elif bst.isSizeOne():
-        return  str(bst._root)
+        return str(bst._root)
 
     else:
         s = str(bst._root) + "("
 
         s += treeToString(bst._left) + ")" + "("
 
-        s += treeToString(bst._right) + ")"
+        s += treeToString(bst._right) + "))"
 
         return s
 bst = BinarySearchTree(7)

@@ -1,5 +1,4 @@
 import math
-import collections
 def flip(list):
     flippedlist = []
     for x in range(len(list)-1,-1,-1):
@@ -437,5 +436,20 @@ def deckRevealedIncreasingOrder(deck):
 
     return retList
 
-print(deckRevealedIncreasingOrder([17,13,11,2,3,5,7]))
+def findAllDuplicates(nums):
+    elements = {}
+    final = []
+    for i in range(1, len(nums) + 1):
+        elements[i] = 0
+
+    for items in nums:
+        elements[items] += 1
+
+        if elements[items] == 2:
+            final.append(items)
+
+    return final
+
+
+print(findAllDuplicates([4,3,2,7,8,2,3,1]))
 
