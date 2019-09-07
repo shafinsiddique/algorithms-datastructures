@@ -148,18 +148,79 @@ def urlify2(s: str):
 
     return newString
 
+def oneDeleteAway(s1, s2):
+    """
 
-def oneAway()
+    Return true if 's1' is ONE DELETE AWAY FROM 's2.'
 
-print(checkPermutation("abc","acb"))
-print(urlify2("Mr John Smith         "))
+    S1 is one delete away if it has one element greater than s1 and if that element is taken away,
+    the two strings match.
+    """
+    if len(s1) == len(s2) + 1:
+        for x in range(len(s1)):
+            newString = ""
+
+            for y in range(len(s1)):
+                if y != x:
+                    newString += s1[y]
+
+            if newString == s2:
+                return True
+    return False
+
+def oneReplaceAway(s1, s2):
+    if len(s1) == len(s2):
+        for x in range(len(s1)):
+            if s1[:x] + s2[x] + s1[x+1:] == s2:
+                return True
+
+
+    return False
+def oneInsertionAway(s1, s2):
+    """Return true if 's1' is ONE INSERTION AWAY from 's2'
+
+    's1' is insertion away if len of s1 is one less than the len of s2."""
+
+    if len(s1) == len(s2) - 1:
+        if s1 == "" or s1[0] != s2[0]:
+            return s2[0] + s1 == s2
+        else:
+            counter = 0
+
+            while counter < len(s1) and s1[counter] == s2[counter]:
+                counter += 1
+
+            if counter == len(s1):
+                return s1 + s2[-1] == s2
+
+            else:
+                return s1[:counter] + s2[counter] + s1[counter:] == s2
+
+    return False
+
+
+
+def oneAway(s1, s2):
+    """Three types of edits can be made on strings.
+
+    Replace, delete and insert character.
+
+    Return true if s1 and s2 are either one or 0 edits away."""
+
+    if s1 == s2:
+        return True
+
+    else:
+        if len(s1) < len(s2):
+            return oneInsertionAway(s1, s2)
+
+        elif len(s1)  > len(s2):
+            return oneDeleteAway(s1, s2)
+
+        else:
+            return oneReplaceAway(s1, s2)
 
 
 
 
-
-
-
-
-
-
+print(oneReplaceAway("shofin","shofin"))
