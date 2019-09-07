@@ -353,6 +353,21 @@ def treeToString(bst: BinarySearchTree):
         s += treeToString(bst._right) + "))"
 
         return s
+
+def maximumBinaryTree(nums: list):
+    """Construct a maximum binary tree from the nums list."""
+
+    if nums == []:
+        return BinarySearchTree(None)
+
+    else:
+        maximumNumber = max(nums)
+        maxIndex = nums.index(maximumNumber)
+        bt = BinarySearchTree(maximumNumber)
+        bt._left = maximumBinaryTree(nums[:maxIndex])
+        bt._right = maximumBinaryTree(nums[maxIndex+1:])
+
+        return bt
 bst = BinarySearchTree(7)
 left = BinarySearchTree(3)
 left._left = BinarySearchTree(2)
@@ -362,7 +377,7 @@ right._left = BinarySearchTree(9)
 right._right = BinarySearchTree(13)
 bst._left = left
 bst._right = right
-print(treeToString(bst))
+print(maximumBinaryTree([3,2,1,6,0,5]))
 # lt = Tree(2, [Tree(4, []), Tree(5, [])])
 # rt = Tree(3, [Tree(6, []), Tree(7, []), Tree(8, []), Tree(9, []),\
 #                           Tree(10, [Tree(12,[])])])
