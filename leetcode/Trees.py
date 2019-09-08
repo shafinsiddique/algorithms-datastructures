@@ -339,6 +339,7 @@ def convertbsttoGreaterTree(bst: BinarySearchTree):
 
 
 def treeToString(bst: BinarySearchTree):
+    """"""
     if bst.isEmpty():
         return ""
 
@@ -368,6 +369,21 @@ def maximumBinaryTree(nums: list):
         bt._right = maximumBinaryTree(nums[maxIndex+1:])
 
         return bt
+
+def insert(bst: BinarySearchTree, item):
+    """Insert into a binary search tree."""
+
+    if bst.isEmpty():
+        bst._root = item
+
+    else:
+        if item < bst._root:
+            return insert(bst._left, item)
+
+        else:
+            return insert(bst._right, item)
+
+
 bst = BinarySearchTree(7)
 left = BinarySearchTree(3)
 left._left = BinarySearchTree(2)
