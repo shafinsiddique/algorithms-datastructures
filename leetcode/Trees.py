@@ -383,6 +383,25 @@ def insert(bst: BinarySearchTree, item):
         else:
             return insert(bst._right, item)
 
+def listToBST(nums: list):
+    """Construct a binary search tree that matches the given preorder traversal.
+
+    """
+
+    if nums == []:
+        return BinarySearchTree(None)
+
+    else:
+        sortedList = sorted(nums)
+
+        midPoint = len(sortedList) // 2
+
+        bst = BinarySearchTree(sortedList[midPoint])
+
+        bst._left = listToBST(sortedList[:midPoint])
+        bst._right = listToBST(sortedList[midPoint+1:])
+
+        return bst
 
 bst = BinarySearchTree(7)
 left = BinarySearchTree(3)
@@ -393,7 +412,11 @@ right._left = BinarySearchTree(9)
 right._right = BinarySearchTree(13)
 bst._left = left
 bst._right = right
-print(maximumBinaryTree([3,2,1,6,0,5]))
+print(listToBST([8,5,1,7,10,12]))
+
+
+
+
 # lt = Tree(2, [Tree(4, []), Tree(5, [])])
 # rt = Tree(3, [Tree(6, []), Tree(7, []), Tree(8, []), Tree(9, []),\
 #                           Tree(10, [Tree(12,[])])])
