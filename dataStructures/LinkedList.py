@@ -47,12 +47,6 @@ class LinkedList:
     def insert(self, index, item):
         pass
 
-l = LinkedList()
-l.add(2)
-l.add(3)
-l.add(4)
-l.append(7)
-l.append(8)
-l.popFirst()
-print(l)
+
+
 
