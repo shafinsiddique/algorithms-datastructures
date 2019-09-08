@@ -53,15 +53,100 @@ def reverseR(linky, curr: Node):
         curr.next.next = curr
         curr.next = None
 
+def deleteNode(linky: LinkedList, item):
+    """Delete from linkedlist given item."""
 
+
+    if (linky and linky._first.item == item):
+        linky._first = linky._first.next
+
+    else:
+        curr = linky._first
+
+        while curr.next and curr.next.item != item:
+            curr = curr.next
+
+        if not curr.next:
+            raise ValueError
+
+        else:
+            curr.next = curr.next.next
+
+def deleteIndex(linky: LinkedList, index):
+    """Delete from linkedlist given index."""
+
+    if linky._first is None:
+        raise IndexError
+
+    else:
+        if index == 0:
+            linky._first = linky._first.next
+
+        else:
+            counter = 0
+            curr = linky._first
+
+            while curr.next and counter < index - 1:
+                curr = curr.next
+                counter += 1
+
+            if not curr.next:
+                raise IndexError
+
+            else:
+                curr.next = curr.next.next
+
+def delete(node: Node):
+    """
+    Delete a node from a linked list given only that node.
+
+    """
+    node.item = node.next.item
+    node.next = node.next.next
+
+
+def merge(l1: LinkedList, l2: LinkedList):
+    """Merge two sorted linked lists."""
+    curr = l1._first
+    curr2 = l2._first
+    merged = LinkedList()
+    mergedCurr = merged._first
+    while curr and curr2:
+        if curr.item < curr2.item:
+            n = Node(curr.item)
+            curr = curr.next
+
+
+
+        else:
+            n = Node(curr2.item)
+            curr2 = curr2.next
+
+        if mergedCurr is None:
+            merged._first = n
+            mergedCurr = n
+
+        else:
+            mergedCurr.next = n
+            mergedCurr = n
+
+
+    if not curr:
+
+        mergedCurr.next = curr2
+
+    else:
+        mergedCurr.next = curr
+
+    return merged
 l = LinkedList()
-l.add(10)
-l.add(20)
-l.add(30)
-l.add(40)
-l.add(50)
-l.add(60)
+l.append(10)
+l.append(20)
+l.append(30)
+l2 = LinkedList()
+l2.append(1)
+l2.append(2)
+l2.append(3)
 print(l)
-reverse(l)
-reverseRecursive(l)
-print(l)
+print(l2)
+print(merge(l, l2))
