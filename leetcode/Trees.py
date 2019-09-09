@@ -403,17 +403,42 @@ def listToBST(nums: list):
 
         return bst
 
-bst = BinarySearchTree(7)
-left = BinarySearchTree(3)
-left._left = BinarySearchTree(2)
-left._right = BinarySearchTree(5)
-right = BinarySearchTree(11)
-right._left = BinarySearchTree(9)
-right._right = BinarySearchTree(13)
+def pruningBinaryTree(bst: BinarySearchTree):
+    """Remove all subtrees that don't have 1."""
+
+    if bst.isEmpty():
+        return
+
+    elif bst.isSizeOne():
+        if bst._root == 0:
+            bst._root = None
+            bst._left = BinarySearchTree(None)
+            bst._right = BinarySearchTree(None)
+
+    else:
+        pruningBinaryTree(bst._left)
+        pruningBinaryTree(bst._right)
+
+        if bst.isSizeOne():
+            if bst._root == 0:
+                bst._root = None
+                bst._left = BinarySearchTree(None)
+                bst._right = BinarySearchTree(None)
+
+
+    
+
+bst = BinarySearchTree(1)
+left = BinarySearchTree(1)
+left._left = BinarySearchTree(0)
+left._right = BinarySearchTree(0)
+right = BinarySearchTree(1)
+right._left = BinarySearchTree(0)
+right._right = BinarySearchTree(1)
 bst._left = left
 bst._right = right
-print(listToBST([8,5,1,7,10,12]))
-
+pruningBinaryTree(bst)
+print(bst)
 
 
 
