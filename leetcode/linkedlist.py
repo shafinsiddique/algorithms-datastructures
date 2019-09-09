@@ -151,6 +151,27 @@ def deleteDuplicates(linky: LinkedList):
             curr = curr.next
 
 
+def detectCycle(linky: LinkedList, pos):
+    """Detect cycle in linkedlist."""
+    if pos  < 0:
+        return False
+
+    else:
+        curr = linky._first
+        counter = 0
+        detectCycle.node = None
+        while curr:
+            if counter == pos:
+                detectCycle.node = curr
+
+            if detectCycle.node and curr.next == detectCycle.node:
+                return True
+
+            curr = curr.next
+            counter += 1
+
+
+        return False
 
 l2 = LinkedList()
 l2.append(1)
@@ -158,5 +179,12 @@ l2.append(1)
 l2.append(1)
 l2.append(1)
 l2.append(4)
-deleteDuplicates(l2)
-print(l2)
+l1 = LinkedList()
+node = Node(1)
+node1 = Node(2)
+node2 = Node(3)
+node.next =node1
+node1.next = node2
+node2.next = node
+l1._first = node
+print(detectCycle(l1, 0))
