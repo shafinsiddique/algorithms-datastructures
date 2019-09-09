@@ -208,7 +208,9 @@ def isPalindrome(linky: LinkedList):
     return True
 
 def removeElements(linky: LinkedList, item):
-    """Remove all elements from linked lists that have the val item."""
+    """Remove all elements from linked lists that have the val item.
+
+    o(n) time, O(1) space."""
 
     curr = linky._first
     while curr.item == item:
@@ -223,14 +225,44 @@ def removeElements(linky: LinkedList, item):
         else:
             curr = curr.next
 
+def getIntersection(linky1: LinkedList, linky2: LinkedList):
+    """Writew a program to find the node at whcih the intersection
+    of two singly linked lists begin."""
 
+    len1 = length(linky1)
+    len2 = length(linky2)
+    curr = linky1._first
+    curr2 = linky2._first
+    if len1 > len2:
+        for x in range(len1-len2):
+            curr = curr.next
+
+    else:
+        for x in range(len2 - len1):
+            curr2 = curr2.next
+
+    while curr and curr2:
+        if curr == curr2:
+            return curr.item
+
+        curr = curr.next
+        curr2 = curr2.next
+
+    return None
+
+l1 = LinkedList()
 l2 = LinkedList()
-l2.append(1)
-l2.append(1)
-l2.append(1)
-l2.append(1)
-l2.append(2)
-l2.append(1)
 
-removeElements(l2, 2)
-print(l2)
+n1 = Node(10)
+n2 = Node(30)
+n3 = Node(50)
+n4 = Node(60)
+n4.next = n3
+n1.next = n3
+n2.next = n4
+
+l1._first = n1
+l2._first = n2
+
+
+print(getIntersection(l1, l2))
