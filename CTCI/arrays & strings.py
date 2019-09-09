@@ -250,4 +250,34 @@ def stringCompression(s):
 
     return newString
 
-print(stringCompression("abcdee"))
+def rotateMatrix(nums: list):
+    """Write a method to rotate the image by 90 degrees."""
+
+    rotated = []
+
+    for x in range(len(nums)-1,-1,-1):
+        rotated.append([lists[x] for lists in nums])
+
+    return rotated
+
+def rotateMatrixInPlace(matrix: list):
+    """
+
+    Rotate the matrix in-place.
+
+    """
+    column = len(matrix)-1
+    for x in range(len(matrix)):
+        list = matrix[x]
+
+        list[0],list[-1] = list[-1],list[0] # first swap the first and last element.
+
+        for y in range(x+1, len(matrix)):
+            list[y],matrix[y][column] = matrix[y][column],list[y] # then swap the other elements.
+
+        column -= 1
+
+l = [[1,2,3], [4,5,6], [7,8,9]]
+print(rotateMatrix(l))
+rotateMatrixInPlace(l)
+print(l)
