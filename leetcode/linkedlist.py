@@ -116,8 +116,6 @@ def merge(l1: LinkedList, l2: LinkedList):
             n = Node(curr.item)
             curr = curr.next
 
-
-
         else:
             n = Node(curr2.item)
             curr2 = curr2.next
@@ -139,6 +137,7 @@ def merge(l1: LinkedList, l2: LinkedList):
         mergedCurr.next = curr
 
     return merged
+
 l = LinkedList()
 l.append(10)
 l.append(20)

@@ -220,7 +220,34 @@ def oneAway(s1, s2):
         else:
             return oneReplaceAway(s1, s2)
 
+def stringCompression(s):
+    """
+
+    implement a method to perform basic string compression using the counts of repeated characters.
+
+    """
+
+    newString = ""
+    compareOld = ""
+    counter = 0
+
+    while counter < len(s):
+        char = s[counter]
+        compareOld += char + "1"
+
+        charCounter = counter + 1
+
+        while charCounter < len(s) and s[charCounter] == s[counter]:
+            charCounter += 1
 
 
+        newString += char + str(charCounter-counter)
 
-print(oneAway("bsubby","bubby"))
+        counter = charCounter
+
+    if compareOld == newString:
+        return s
+
+    return newString
+
+print(stringCompression("abcdee"))
