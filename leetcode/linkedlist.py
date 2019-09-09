@@ -138,14 +138,25 @@ def merge(l1: LinkedList, l2: LinkedList):
 
     return merged
 
-l = LinkedList()
-l.append(10)
-l.append(20)
-l.append(30)
+def deleteDuplicates(linky: LinkedList):
+    """Given a sorted linked lists, delete all duplicates such that each element appear
+    only once."""
+
+    curr = linky._first
+
+    while curr and curr.next:
+        if curr.item == curr.next.item:
+            curr.next = curr.next.next
+        else:
+            curr = curr.next
+
+
+
 l2 = LinkedList()
 l2.append(1)
-l2.append(2)
-l2.append(3)
-print(l)
+l2.append(1)
+l2.append(1)
+l2.append(1)
+l2.append(4)
+deleteDuplicates(l2)
 print(l2)
-print(merge(l, l2))
