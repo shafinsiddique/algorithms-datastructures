@@ -277,7 +277,32 @@ def rotateMatrixInPlace(matrix: list):
 
         column -= 1
 
-l = [[1,2,3], [4,5,6], [7,8,9]]
-print(rotateMatrix(l))
-rotateMatrixInPlace(l)
+
+def clearRowAndColumn(matrix, row, column):
+    for x in range(len(matrix[row])): #### clear Row.
+        matrix[row][x] = 0
+
+    for arrays in matrix:
+        arrays[column] =0
+
+
+
+def zeroM(matrix: list):
+    """
+
+    Write an algorithm such that if an element in an MxM matrix is 0, its entire row
+    and columns are set to 0.
+
+    """
+    rows = []
+    cols = []
+    for x in range(len(matrix)):
+        for y in range(len(matrix[x])):
+            if matrix[x][y] == 0 and x not in rows and y not in cols:
+                clearRowAndColumn(matrix, x, y)
+                rows.append(x)
+                cols.append(y)
+                break
+l = [[1,2,0],[3,4,6],[0,4,6]]
+zeroM(l)
 print(l)
