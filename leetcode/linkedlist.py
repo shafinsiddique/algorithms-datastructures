@@ -173,18 +173,64 @@ def detectCycle(linky: LinkedList, pos):
 
         return False
 
+def isPalindrome(linky: LinkedList):
+    """Return whether a given linked list is a palindrome.
+
+    For O(1) space,
+
+    get to the middle of the node.
+
+    reverse the 2nd half of the linked list.
+
+    check if first half equals second half."""
+
+
+    linky2 = LinkedList()
+
+    curr = linky._first
+
+    while curr:
+        node = Node(curr.item)
+        node.next = linky2._first
+        linky2._first = node
+        curr = curr.next
+
+    curr = linky._first
+    curr2 = linky2._first
+
+    while curr:
+        if curr.item != curr2.item:
+            return False
+
+        curr = curr.next
+        curr2 = curr2.next
+
+    return True
+
+def removeElements(linky: LinkedList, item):
+    """Remove all elements from linked lists that have the val item."""
+
+    curr = linky._first
+    while curr.item == item:
+        linky._first = curr.next
+        curr = linky._first
+
+
+    while curr.next:
+        if curr.next.item == item:
+            curr.next = curr.next.next
+
+        else:
+            curr = curr.next
+
+
 l2 = LinkedList()
 l2.append(1)
 l2.append(1)
 l2.append(1)
 l2.append(1)
-l2.append(4)
-l1 = LinkedList()
-node = Node(1)
-node1 = Node(2)
-node2 = Node(3)
-node.next =node1
-node1.next = node2
-node2.next = node
-l1._first = node
-print(detectCycle(l1, 0))
+l2.append(2)
+l2.append(1)
+
+removeElements(l2, 2)
+print(l2)
