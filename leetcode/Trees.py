@@ -426,20 +426,84 @@ def pruningBinaryTree(bst: BinarySearchTree):
                 bst._right = BinarySearchTree(None)
 
 
+def getLeavesFrom(tree: BinarySearchTree):
+    """Get the leaf nodes."""
+
+    if tree.isEmpty():
+        return []
+
+    elif tree.isSizeOne():
+        return [tree]
+
+    else:
+        trees = []
+        trees.extend(getLeavesFrom(tree._left))
+        trees.extend(getLeavesFrom(tree._right))
+
+        return trees
+
+def createTreeCopy(bst: BinarySearchTree):
+    """Create a copy of the BST."""
+
+    if bst.isEmpty():
+        return BinarySearchTree(None)
+
+    elif bst.isSizeOne():
+        return BinarySearchTree(bst._root)
+
+    else:
+        newBst = BinarySearchTree(bst._root)
+        newBst._left = createTreeCopy(bst._left)
+        newBst._right = createTreeCopy(bst._right)
+
+        return newBst
+
+def createTreesFrom(tree: BinarySearchTree):
+    """Return a list of trees by adding two leaves to each leaf.  """
+
+    getLeaves = getLeavesFrom(tree)
+    newTree = []
+    for leaves in getLeaves:
+        nt = BinarySearchTree(0)
+        leaves._left = BinarySearchTree(0)
+        leaves._right = BinarySearchTree(0)
+        newTree.append(createTreeCopy(tree))
+        leaves._left = BinarySearchTree(None)
+        leaves._right = BinarySearchTree(None)
+
+    return newTree
+
+
+def allPossibleBST(num):
+    """
+    Return a list of all possible full binary trees with N nodes.
+    Each element of the answer is the root node of one possible tree.
+
+"""
+
+    if num % 2 == 0:
+        return []
+
+    elif num == 1:
+        return [BinarySearchTree(0)]
+
+    else:
+        treesToUpdate = allPossibleBST(num-2)
+
+        trees = []
+
+        for tree in treesToUpdate:
+            trees.extend(createTreesFrom(tree))
+
+        return trees
+
     
 
-bst = BinarySearchTree(1)
-left = BinarySearchTree(1)
-left._left = BinarySearchTree(0)
-left._right = BinarySearchTree(0)
-right = BinarySearchTree(1)
-right._left = BinarySearchTree(0)
-right._right = BinarySearchTree(1)
-bst._left = left
-bst._right = right
-pruningBinaryTree(bst)
-print(bst)
+trees = allPossibleBST(7)
 
+for tree in trees:
+    print(tree)
+    print("end of tree")
 
 
 # lt = Tree(2, [Tree(4, []), Tree(5, [])])
