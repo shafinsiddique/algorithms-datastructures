@@ -323,15 +323,51 @@ def components(linky: LinkedList, G: list):
 
     return counter
 
+def addTwoNumbers(linky1: LinkedList, linky2: LinkedList):
+    curr = linky1._first
+    firstNum = ""
+
+    while curr:
+        firstNum += str(curr.item)
+        curr = curr.next
+
+    curr2 = linky2._first
+    secondNum = ""
+    while curr2:
+        secondNum += str(curr2.item)
+        curr2 = curr2.next
+
+    summation = str(int(firstNum) + int(secondNum))
+
+    l = LinkedList()
+    node = None
+
+    for numbers in summation:
+        newNode = Node(numbers)
+        if node:
+            node.next = newNode
+            node  = newNode
+
+        else:
+            l._first = newNode
+            node = newNode
+    return l
+
+
+
+
 l1 = LinkedList()
 l2 = LinkedList()
 
-l1.append(0)
-l1.append(1)
+l1.append(7)
 l1.append(2)
+l1.append(4)
 l1.append(3)
-l1.append(3)
+
+l2.append(5)
+l2.append(6)
+l2.append(4)
 
 g = [0,3,1,4]
 
-print(components(l1, g))
+print(addTwoNumbers(l1, l2))
