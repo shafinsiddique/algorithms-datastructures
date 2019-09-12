@@ -299,13 +299,39 @@ def nextGNode(linky: LinkedList):
 
     return results
 
+def components(linky: LinkedList, G: list):
+    """Return the number of connected components in G,
+    where two values are connected if they appear consecutively in the linked list.
+"""
 
+    gDict = {}
+
+    for items in G:
+        gDict[items] = None
+
+    counter = 0
+    curr = linky._first
+
+    while curr.next:
+        if curr.item in gDict and curr.next.item in gDict:
+            counter += 1
+
+
+
+
+        curr = curr.next
+
+    return counter
 
 l1 = LinkedList()
 l2 = LinkedList()
 
+l1.append(0)
 l1.append(1)
 l1.append(2)
 l1.append(3)
+l1.append(3)
 
-print(nextGNode(l1))
+g = [0,3,1,4]
+
+print(components(l1, g))
