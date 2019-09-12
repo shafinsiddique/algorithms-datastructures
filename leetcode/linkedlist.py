@@ -250,19 +250,62 @@ def getIntersection(linky1: LinkedList, linky2: LinkedList):
 
     return None
 
+def nextGreaterNode(linky: LinkedList):
+    nums = []
+    curr  = linky._first
+
+    while curr:
+        max = 0
+
+        curr2 = curr.next
+
+        while curr2:
+            if curr2.item > max:
+                max = curr2.item
+
+            curr2 = curr2.next
+
+        nums.append(max)
+
+        curr = curr.next
+
+    return nums
+
+def nextGNode(linky: LinkedList):
+    """
+    list of next greater integer for each element.
+    """
+    stack = []
+    curr = linky._first
+    values = {}
+    results = []
+    while curr:
+        item = curr.item
+
+        if not stack or stack[-1] > item:
+            stack.append(item)
+            values[item] = 0
+            curr = curr.next
+
+
+        else:
+            values[stack.pop()] = item
+
+    curr2 = linky._first
+
+    while curr2:
+        results.append(values[curr2.item])
+        curr2 = curr2.next
+
+    return results
+
+
+
 l1 = LinkedList()
 l2 = LinkedList()
 
-n1 = Node(10)
-n2 = Node(30)
-n3 = Node(50)
-n4 = Node(60)
-n4.next = n3
-n1.next = n3
-n2.next = n4
+l1.append(1)
+l1.append(2)
+l1.append(3)
 
-l1._first = n1
-l2._first = n2
-
-
-print(getIntersection(l1, l2))
+print(nextGNode(l1))
