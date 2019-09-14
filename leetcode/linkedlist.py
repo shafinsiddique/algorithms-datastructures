@@ -353,8 +353,40 @@ def addTwoNumbers(linky1: LinkedList, linky2: LinkedList):
             node = newNode
     return l
 
+def odd_even(linky: LinkedList):
+    """Invert odd and even."""
 
+    curr = linky._first
+    link = LinkedList()
+    node = None
+    while curr:
+        oddNode = Node(curr.item)
 
+        if node is None:
+            link._first = oddNode
+        else:
+            node.next = oddNode
+
+        node = oddNode
+
+        if not curr.next:
+            break
+
+        curr = curr.next.next
+
+    curr2 = linky._first.next
+
+    while curr2:
+        evenNode = Node(curr2.item)
+        node.next = evenNode
+        node = evenNode
+
+        if not curr2.next:
+            break
+        else:
+            curr2 = curr2.next.next
+
+    return link
 
 l1 = LinkedList()
 l2 = LinkedList()
@@ -362,12 +394,7 @@ l2 = LinkedList()
 l1.append(7)
 l1.append(2)
 l1.append(4)
-l1.append(3)
 
-l2.append(5)
-l2.append(6)
-l2.append(4)
 
-g = [0,3,1,4]
 
-print(addTwoNumbers(l1, l2))
+print(odd_even(l1))

@@ -402,6 +402,7 @@ def meetingRooms(l):
 
     return len(rooms)
 
+
 def firstMissingPositive(nums):
         nums.sort()
 
@@ -458,7 +459,4 @@ def reverseList(nums):
         nums[x], nums[len(nums)-1-x] = nums[len(nums)-1-x], nums[x]
 
 
-nums = [1,2,3,4,5,6,109238]
-reverseList(nums)
-print(nums)
 
