@@ -497,14 +497,62 @@ def allPossibleBST(num):
 
         return trees
 
-    
 
-trees = allPossibleBST(7)
+def equalTrees(b1: BinarySearchTree, b2: BinarySearchTree):
+    if b1.isEmpty() and b2.isEmpty():
+        return True
 
-for tree in trees:
-    print(tree)
-    print("end of tree")
+    elif b1.isEmpty():
+        return False
 
+    elif b2.isEmpty():
+        return False
+
+    else:
+        if b1._root != b2._root:
+            return False
+
+        if equalTrees(b1._left, b2._left) and equalTrees(b1._right, b2._right):
+            return True
+
+        else:
+            return False
+def flipEquivalent(bst1: BinarySearchTree, bst2: BinarySearchTree):
+    """Determine if two trees are flip equivalent."""
+
+    if bst1.isEmpty() and bst2.isEmpty():
+        return True
+
+    elif bst1.isEmpty():
+        return False
+
+    elif bst2.isEmpty():
+        return False
+
+    else:
+        if bst1._root != bst2._root:
+            return False
+
+        if (flipEquivalent(bst1._left, bst2._right) and \
+            flipEquivalent(bst1._right, bst2._left)) or (flipEquivalent(bst1._left,
+                                                                        bst2._left)
+                                                         and flipEquivalent(bst1._right. bst2._right)):
+
+            return True
+
+        return False
+
+
+
+t = BinarySearchTree(1)
+t._left = BinarySearchTree(2)
+t._right = BinarySearchTree(3)
+
+t2 = BinarySearchTree(1)
+t2._right = BinarySearchTree(2)
+t2._left = BinarySearchTree(3)
+
+print(flipEquivalent(t, t2))
 
 # lt = Tree(2, [Tree(4, []), Tree(5, [])])
 # rt = Tree(3, [Tree(6, []), Tree(7, []), Tree(8, []), Tree(9, []),\
