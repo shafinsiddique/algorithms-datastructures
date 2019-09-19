@@ -543,17 +543,42 @@ def flipEquivalent(bst1: BinarySearchTree, bst2: BinarySearchTree):
         return False
 
 
+def lowestCommonAncestor(bst, a, b):
+    """Find the lowest common ancestor of nodes with these two values,
+    you can assume the values exist."""
 
-t = BinarySearchTree(1)
-t._left = BinarySearchTree(2)
-t._right = BinarySearchTree(3)
+    if (a<= bst._root and b>= bst._root) or (b<=bst._root) and (a>= bst._root):
+        return bst._root
 
-t2 = BinarySearchTree(1)
-t2._right = BinarySearchTree(2)
-t2._left = BinarySearchTree(3)
+    else:
+        if a <= bst._root:
+            if bst._left._root == a or bst._left._root == b:
+                return bst._root
 
-print(flipEquivalent(t, t2))
+            return lowestCommonAncestor(bst._left, a, b)
 
+        else:
+            if bst._right._root == a or bst._right._root == b:
+                return bst._root
+
+            return lowestCommonAncestor(bst._right, a, b)
+
+
+t = BinarySearchTree(20)
+
+bottomMostTree = BinarySearchTree(12)
+bottomMostTree._left = BinarySearchTree(10)
+bottomMostTree._right =BinarySearchTree(14)
+
+leftTree = BinarySearchTree(8)
+leftTree._right = bottomMostTree
+leftTree._left = BinarySearchTree(4)
+
+t._left = leftTree
+
+t._right = BinarySearchTree(22)
+
+print(lowestCommonAncestor(t, 12 ,10))
 # lt = Tree(2, [Tree(4, []), Tree(5, [])])
 # rt = Tree(3, [Tree(6, []), Tree(7, []), Tree(8, []), Tree(9, []),\
 #                           Tree(10, [Tree(12,[])])])
