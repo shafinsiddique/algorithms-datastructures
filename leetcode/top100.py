@@ -1,6 +1,7 @@
 from dataStructures.BST import BinarySearchTree
 from dataStructures.LinkedList import LinkedList
 from dataStructures.LinkedList import Node
+import sys
 def twoSum(nums, target):
     """Given an array of integers, return the indices such
     that they add up to a certain target, you can assume it exists."""
@@ -137,9 +138,37 @@ def reverseLinkyRecursive(linky: LinkedList):
         return reverseNodes(linky, linky._first)
 
 
-l = LinkedList()
-l.append(1)
-l.append(2)
-l.append(3)
-reverseLinkedList(l)
-print(l)
+def wordChain():
+    line = int(sys.stdin.readline())
+    words =[]
+    for x in range(line):
+        words.append(sys.stdin.readline().replace("\n",""))
+
+    counter = 1
+
+    currentLastString = words[0][-1]
+
+    for x in range(1, len(words)):
+        if words[x][0] == currentLastString:
+            counter += 1
+            currentLastString = words[x][-1]
+        else:
+            break
+
+    return counter
+
+
+def fibonnacciLike(n):
+    """f1 = 1, f2 = 2"""
+
+    if n == 1:
+        return 1
+
+    elif n == 2:
+        return 2
+
+    else:
+        return fibonnacciLike(n-1) + fibonnacciLike(n-2)
+
+
+print(wordChain())
