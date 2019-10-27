@@ -593,3 +593,10 @@ def sortParity(arr):
         else:
             odd.append(items)
     return even + odd
+
+def squareArray(arr):
+    squares = []
+    for items in arr:
+        squares.append(arr*arr)
+
+    return squares
