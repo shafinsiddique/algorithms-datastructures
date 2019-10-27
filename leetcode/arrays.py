@@ -581,6 +581,15 @@ def flippingAnImage(arr):
     for row in arr:
         reverseAndInvert(row)
 
-l = [[1,1,0],[1,0,1],[0,0,0]]
-flipandInvertImage(l)
-print(l)
+
+def sortParity(arr):
+    odd = []
+    even = []
+
+    for items in arr:
+        if (items % 2 ==0 ):
+            even.append(items)
+
+        else:
+            odd.append(items)
+    return even + odd
