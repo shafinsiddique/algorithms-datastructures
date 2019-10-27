@@ -129,6 +129,10 @@ def satisfyingSubarrays(arr, k):
 
     return len(subArrays)
 
-print(satisfyingSubarrays([1,4,6,8,10],1))
+i = 8
+
+print(str(i).zfill(6))
+
+
 
 

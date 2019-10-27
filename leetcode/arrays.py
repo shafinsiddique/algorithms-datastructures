@@ -458,5 +458,129 @@ def reverseList(nums):
     for x in range(len(nums)//2):
         nums[x], nums[len(nums)-1-x] = nums[len(nums)-1-x], nums[x]
 
+def binarySearch(l, item):
+    if l == []:
+        return False
+
+    else:
+        midpoint = len(l)//2
+        middleElement = l[midpoint]
+
+        if middleElement == item:
+            return True
+
+        elif (item < middleElement):
+            return binarySearch(l[:midpoint], item)
+
+        else:
+            return binarySearch(l[midpoint+1:], item)
+def k_difference(l, k):
+    dict = {}
+
+    for items in l:
+        dict[items] = None
+
+    counter = 0
+    for items in l:
+        if items + k in dict:
+            counter += 1
+
+    return counter
+
+def getPath(startingPoint, magic, dist):
+    currentIndex = startingPoint
+    totalPower = 0
+    totalIterations = 0
+    for x in range(len(magic)):
+        totalPower += magic[currentIndex]
+
+        if totalPower >= dist[currentIndex]:
+            totalPower -= dist[currentIndex]
+
+        else:
+            return -1, totalPower
+
+        if currentIndex < len(magic)-1:
+            currentIndex +=1
+
+        else:
+            currentIndex = 0
+
+        totalIterations += 1
+
+    return totalIterations, totalPower
+
+def aladin(magic, dist):
+    maxDist = {}
+    for x in range(len(magic)):
+        cycleLength, totalPower = getPath(x, magic, dist)[0][1]
+
+        if cycleLength != -1:
+            pass
+
+        else:
+            maxDist[x] = (cycleLength, totalPower)
+
+    maxIndex = 0
+
+    for items in maxDist:
+        if maxDist[items][0] > maxDist[maxIndex][0]:
+            maxIndex = items
 
 
+    print(maxDist)
+    return maxIndex
+
+def diagonalWin(arr):
+    """Given an nxn array, return true if there's a diagonal win from top left."""
+    counter = 0
+    index = 0
+
+    while index < len(arr):
+        if arr[index][index] == "x":
+            counter += 1
+
+        index += 1
+
+    return counter == len(arr)
+
+def leadingZeroes(num):
+    s = str(num)
+    charArray = []
+    for items in s:
+        charArray.append(items)
+
+    counter = 0
+    while len(charArray)<7:
+        counter += 1
+        charArray.insert(0,0)
+
+
+    return "Leading Zeroes: " + str(counter)
+
+
+def reverseAndInvert(row):
+    """Reverse and Flip this 1d Array."""
+
+    for x in range(len(row)//2):
+        if row[x] == 0:
+            row[x] = 1
+        else:
+            row[x] = 0
+
+        if row[0-x] == 0:
+            row[0-x] = 1
+        else:
+            row[0-x] = 0
+
+        row[x],row[0-x] = row[0-x], row[x]
+        return row
+def flippingAnImage(arr):
+    """Flip and invert image."""
+
+    for row in arr:
+        reverseAndInvert(row)
+
+l = [[1,1,0],[1,0,1],[0,0,0]]
+flipandInvertImage(l)
+print(l)
