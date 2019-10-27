@@ -600,3 +600,15 @@ def squareArray(arr):
         squares.append(arr*arr)
 
     return squares
+
+def heightChecker(arr):
+    counter = 0
+
+    for x in range(1, len(arr)):
+        if arr[x-1] > arr[x]:
+            arr[x-1],arr[x] = arr[x],arr[x-1]
+            counter += 1
+
+    return counter
+
+print(heightChecker([1,1,4,2,1,3]))
