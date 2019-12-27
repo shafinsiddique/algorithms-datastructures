@@ -611,4 +611,19 @@ def heightChecker(arr):
 
     return counter
 
-print(heightChecker([1,1,4,2,1,3]))
+
+def numberofOddNumberDigits(arr):
+    counter = 0
+    for elements in arr:
+        if (numberOfDigits(elements, 1) % 2 == 1):
+            counter += 1
+
+    return counter
+
+def numberOfDigits(element, currentPoint):
+    if element < math.pow(10, currentPoint):
+        return currentPoint
+
+    return numberOfDigits(element, currentPoint+1)
+
+print(numberofOddNumberDigits([10,100,500,600,7000,800,10000, 100000,1000000]))
