@@ -302,7 +302,21 @@ def zeroM(matrix: list):
                 clearRowAndColumn(matrix, x, y)
                 rows.append(x)
                 cols.append(y)
+
                 break
-l = [[1,2,0],[3,4,6],[0,4,6]]
-zeroM(l)
-print(l)
+
+
+def rbc(a, b):
+    x = a
+    y = b
+
+    while (x != y):
+        if (x > y):
+            x = x - y
+
+        else:
+            y = y - x
+
+    return x
+
+print(rbc(2475, 875))

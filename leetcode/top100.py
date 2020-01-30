@@ -169,6 +169,3 @@ def fibonnacciLike(n):
 
     else:
         return fibonnacciLike(n-1) + fibonnacciLike(n-2)
-
-
-print(wordChain())
