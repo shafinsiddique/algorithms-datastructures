@@ -445,7 +445,30 @@ def dailyTemperatures(l):
         output.append(warmerDay)
     return output
 
-print(dailyTemperatures([73, 74, 75, 71, 69, 72, 76, 73]))
+def strcopy(string, elements):
+    new_str = ""
+
+    for x in range(len(string)):
+        if x not in elements:
+            new_str += string[x]
+
+    return new_str
+def removeAdjacentDuplicates(string):
+    i = 0
+    while i < len(string)-1:
+        if string[i] == string[i+1]:
+            string = strcopy(string, [i,i+1])
+            if i > 0:
+                i -= 1
+            else:
+                i = 0
+
+        else:
+            i += 1
+    return string
+
+
+print(removeAdjacentDuplicates("ooi"))
 
 
 

@@ -11,6 +11,9 @@ class Stack:
     def pop(self):
         return self._items.pop()
 
+    def peek(self):
+        return self._items[-1]
+
 def binary_operation(operation: str):
     """precondition: <operation> is valid."""
     operators = Stack()
@@ -46,8 +49,39 @@ def binary_operation(operation: str):
 
     return items.pop()
 
-print(binary_operation("((2*4)*2)"))
+def valid_parentheses(string):
+    s = Stack()
+    format = {")":"(","}":'{',']':'['}
+    for elements in string:
+        if elements == "(" or elements == "{" or elements == "[":
+            s.push(elements)
 
+        else:
+            if s.is_empty():
+                return False
 
+            if s.pop() != format[elements]:
+                return False
+
+    if s.is_empty():
+        return True
+
+    return False
+
+def adjacentDuplicates(string):
+    s = Stack()
+    for elements in string:
+        if s.is_empty():
+            s.push(elements)
+
+        elif s.peek() == elements:
+            s.pop()
+
+        else:
+            s.push(elements)
+
+    return ''.join(s._items)
+
+print(adjacentDuplicates("ooo1aa"))
 
 
