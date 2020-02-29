@@ -348,6 +348,7 @@ def fib(n):
     else:
         return fib(n-1) + fib(n-2)
 
+
 def discreteTest(n):
     ls = fib(n-1) * fib(n+1)-(fib(n)*fib(n))
 
@@ -626,4 +627,16 @@ def numberOfDigits(element, currentPoint):
 
     return numberOfDigits(element, currentPoint+1)
 
-print(numberofOddNumberDigits([10,100,500,600,7000,800,10000, 100000,1000000]))
+def reverse(arr):
+    """
+    reverse the arr in inplace.
+    """
+    for x in range(len(arr)//2):
+
+        arr[x], arr[len(arr)-1-x] = arr[len(arr)-1-x], arr[x]
+
+    return arr
+
+
+# print(numberofOddNumberDigits([10,100,500,600,7000,800,10000, 100000,1000000]))
+print(reverse([1,2,3,4,5]))

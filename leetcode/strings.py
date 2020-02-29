@@ -467,9 +467,45 @@ def removeAdjacentDuplicates(string):
             i += 1
     return string
 
+def check_removal(larger_string, smaller_string):
+    for x in range(len(larger_string)):
+        if x == 0:
+            if larger_string[1:] == smaller_string:
+                return True
 
-print(removeAdjacentDuplicates("ooi"))
+        else:
+            if larger_string[:x] + larger_string[x+1:] == smaller_string:
+                return True
+
+    return False
+
+def check_replace(string1, string2):
+    """Assume len(string1) == len(string2) """
+
+    for x in range(len(string1)):
+        if string1[x] != string2[x]:
+            if string1[:x] + string2[x] + string1[x+1:] == string2:
+                return True
+
+    return False
 
 
+def one_away(string1, string2):
+    """Given two strings, return True if they are one away: which means
+    """
+
+    if len(string1) == len(string2) + 1:
+        return check_removal(string1, string2)
+
+    elif len(string2) == len(string1) + 1:
+        return check_removal(string2, string1)
+
+    elif len(string1) == len(string2):
+        if string1 == string2:
+            return True
+
+        return check_replace(string1, string2)
+
+    return False
 
 
