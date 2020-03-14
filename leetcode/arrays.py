@@ -637,6 +637,20 @@ def reverse(arr):
 
     return arr
 
+def binary_search(arr, element):
+    """use binary search to find the element in the arr."""
 
-# print(numberofOddNumberDigits([10,100,500,600,7000,800,10000, 100000,1000000]))
-print(reverse([1,2,3,4,5]))
+    if arr == []:
+        return False
+
+    mid_point = len(arr)//2
+
+    if arr[mid_point] == element:
+        return True
+
+    elif element < arr[mid_point]:
+        return binary_search(arr[:mid_point], element)
+
+    else:
+        return binary_search(arr[mid_point+1:],element)
+
