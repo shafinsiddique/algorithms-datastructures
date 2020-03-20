@@ -1,5 +1,6 @@
 from stack import Stack
 from linked_list import LinkedList,Node
+
 def largest_container_with_water(arr):
     """given an arr of heights, find the largest container ."""
 
@@ -45,6 +46,7 @@ def warm_temperatures(arr):
 
     return days
 
+
 def run_length_decoding(string):
     '''given an encoded string, return its decoded version.'''
     decoded = ""
@@ -80,6 +82,7 @@ def run_length_decoding(string):
             curr_point += 1
     return decoded
 
+
 def bottom_left_tree_value(tree):
     """given a binary tree, """
 
@@ -109,6 +112,7 @@ def longest_palindrome_in_s(string):
             if substring == reversed_substring:
                 return substring
 
+
 def longest_substring_without_repeating_characters(string):
     '''given a string, find the longest subtstring
     without repeating characters.'''
@@ -128,6 +132,7 @@ def longest_substring_without_repeating_characters(string):
         index = second_counter
 
     return max_without_repeating
+
 
 def maximum_width_of_binary_tree(bst):
     """return the maximum of the binary tree."""
@@ -177,6 +182,7 @@ def is_palindrome(string):
 
     return processed_string == reversed_string
 
+
 def string_to_integer_atoi(string):
     '''convert string to integer.'''
 
@@ -201,6 +207,7 @@ def string_to_integer_atoi(string):
     else:
         return "error"
 
+
 def reverse_string(string):
     '''return the reversed string.'''
 
@@ -220,6 +227,7 @@ def reverse_list(arr):
         r_pointer -= 1
 
     return arr
+
 
 def reverse_items_in_string(string):
     reversed = ""
@@ -242,7 +250,9 @@ def reverse_items_in_string(string):
 
     return reversed
 
+
 def reverse_items_string_II(string):
+
     """do an in-place """
     curr_index = 0
     reversed= ""
@@ -291,6 +301,7 @@ def valid_parenthesis(string):
 
     return True
 
+
 def group_anagrams(words):
     serialization_dict = {}
     for word in words:
@@ -298,7 +309,7 @@ def group_anagrams(words):
         ser = ""
         for char in word:
             if char in char_count:
-                char_count[char] +=1
+                char_count[char] += 1
             else:
                 char_count[char] = 1
 
@@ -344,6 +355,7 @@ def intersection_of_linkys(linky1, linky2):
         curr1 = curr1.next
         curr2 = curr2.next
 
+
 def best_time_to_buy_stock(arr):
     max_profit = 0
     min_value = max(arr)
@@ -357,6 +369,7 @@ def best_time_to_buy_stock(arr):
 
     return max_profit
 
+
 def is_palindrome_2(string):
     """given a string, determine if it is a palindrome, ignoring cases and  non alphanumeric cases."""
 
@@ -367,6 +380,7 @@ def is_palindrome_2(string):
             processed_string += chars.lower()
 
     return processed_string == processed_string[::-1]
+
 
 def string_to_integer(string):
     """convert the following string to integer."""
@@ -385,6 +399,7 @@ def string_to_integer(string):
 
     else:
         return int(processed_string[0:starting])
+
 
 def reverse_string_2(string):
     '''reverse the given string.'''
@@ -422,6 +437,7 @@ def reverse_words_in_string2(string):
             cur_index += 1
 
     return reversed
+
 
 if __name__ == "__main__":
     pass
