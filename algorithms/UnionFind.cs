@@ -34,7 +34,7 @@ namespace algorithms
    class QuickUnion : UnionFind{
        int[]ids;
 
-       public QuickUnion(int n) {
+       public QuickUnion(int n) : base() {
            this.ids = new int[n];
            for (int x=0; x<this.ids.Length; x++) {
                this.ids[x] = x;
@@ -48,15 +48,45 @@ namespace algorithms
             this.ids[root(p1)] = root(p2);
        }
 
-       private int root(int p) {
+       protected int root(int p) {
            if (ids[p] == p){ 
                return p;
            }
+           ids[p] = ids[ids[p]];
            return root(ids[p]);
 
+
        }
+   }
 
+   class WeightedQuickUnion : QuickUnion {
+       int[] ids;
+       int[] sizes;
+       public WeightedQuickUnion(int n) : base(n) {
+           ids = new int[n];
+           sizes = new int[n];
+           for (int x=0; x<n; x++) {
+               ids[x] =x ;
+               sizes[x] = 1;
+           }
 
-    
+       }
+        public new void union(int p1, int p2) {
+            int root1 = root(p1);
+            int root2 = root(p2);
+
+            if (root1 != root2) {
+                if (sizes[root1] < sizes[root2]) {
+                    ids[root1] = ids[root2];
+                    sizes[root2] += sizes[root1];
+                }
+
+                else {
+                    ids[root2] = ids[root1];
+                    sizes[root1] += sizes[root2];
+                }
+            }
+
+        }
    }
 }
