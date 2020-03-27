@@ -9,7 +9,10 @@ public class LinkedList {
             this.item = item;
             this.next = null;
         }
-        
+
+        public override String ToString() {
+            return this.item.ToString();
+        }
     }
 
     public LinkedList() {
@@ -25,10 +28,15 @@ public class LinkedList {
         this.first = new_node;
     }
 
-    public void pop()  {
+    public Object pop()  {
         if (this.first != null) {
+            Node first;
+            first = this.first;
             this.first = this.first.next;
+
+            return first;
         }
+        return null;
     }
 
     public void append(Object item){ 
@@ -59,6 +67,12 @@ public class LinkedList {
 
         return string_rep;
     }
+
+
+
+
+
+
 
 
 }
