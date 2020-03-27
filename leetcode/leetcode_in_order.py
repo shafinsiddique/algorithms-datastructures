@@ -1,4 +1,3 @@
-#1
 def decompressRLElist(nums):
     output = []
     for x in range(0, len(nums), 2):
@@ -8,12 +7,9 @@ def decompressRLElist(nums):
         output.extend([value] * freq)
 
     return output
-#2
 
 def defangIPAddr(address):
     return address.replace(".","[.]")
-
-#3
 
 def even_numbers(nums):
     counter = 0

@@ -5,10 +5,12 @@ namespace algorithms
     {
         static void Main(string[] args)
         {
-            UnionFind h = new WeightedQuickUnion(4);
-            h.union(0,3);
-            h.union(2,3);
-            System.Console.WriteLine(h.connected(0,2));
+            LinkedList l  = new LinkedList();
+            l.append(10);
+            l.append(20);
+            l.append(30);
+            l.add(4);
+            System.Console.WriteLine(l);
         }
     }
 }

@@ -54,11 +54,6 @@ def path_exists(graph, p1, p2):
 
         return False
 
-
-
-
-
-
 if __name__ == "__main__":
     g = Graph()
     v1 = Vertex("A")
