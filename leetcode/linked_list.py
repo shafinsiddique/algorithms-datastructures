@@ -439,25 +439,38 @@ def add_two_linked_lists(linky1, linky2):
     return sum_list
 
 
+def osmosis(linky):
+    head_node = None
+    tail_node = None
+
+    curr = linky.first
+
+    while curr:
+        if not head_node:
+            head_node = Node(curr.item)
+            tail_node = head_node
+
+        else:
+            if curr.item == tail_node.item:
+                tail_node.item = tail_node.item*2
+
+            else:
+                tail_node.next = Node(curr.item)
+                tail_node = tail_node.next
+
+        curr = curr.next
+
+    linky.first = head_node
+
 
 if __name__ == "__main__":
     l = LinkedList()
     l.append(1)
+    l.append(1)
+    l.append(2)
     l.append(2)
     l.append(3)
     l.append(4)
-    l2 = LinkedList()
-    l2.append(1)
-    l2.append(2)
-    l2.append(3)
-    print(add_two_linked_lists(l,l2))
-    # # l.append(4)
-    # # l.append(5)
-    # l2 = LinkedList()
-    # l2.append(1)
-    # l2.append(3)
-    # l2.append(4)
-    # # l2.append(40)
-    # print(merge_n(l, l2))
-
+    osmosis(l)
+    print(l)
 

@@ -23,9 +23,6 @@ namespace algorithms
             r.pop();
             System.Console.WriteLine("Array: " + r + "\nLength: " + r.getLength());
 
-
-
-
         }
     }
 }

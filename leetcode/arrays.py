@@ -1,4 +1,5 @@
 import math
+from stack import Stack
 def flip(list):
     flippedlist = []
     for x in range(len(list)-1,-1,-1):
@@ -653,4 +654,24 @@ def binary_search(arr, element):
 
     else:
         return binary_search(arr[mid_point+1:],element)
+
+
+def osmosis_array(arr):
+    output_list = []
+    for elements in arr:
+        if output_list == []:
+            output_list.append(elements)
+
+        else:
+            if output_list[-1] == elements:
+                output_list[-1] = elements*2
+
+            else:
+                output_list.append(elements)
+    return output_list
+
+
+
+print(osmosis_array([1,1,2,3]))
+
 
