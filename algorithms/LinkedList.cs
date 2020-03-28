@@ -1,8 +1,6 @@
 using System;
 
-public class LinkedList {
-    Node first;
-    private class Node {
+public class Node {
         public Object item;
         public Node next;
         public Node(Object item) {
@@ -14,6 +12,9 @@ public class LinkedList {
             return this.item.ToString();
         }
     }
+public class LinkedList {
+    Node first;
+    
 
     public LinkedList() {
         this.first = null;
@@ -68,11 +69,45 @@ public class LinkedList {
         return string_rep;
     }
 
+}
 
+public class BackLinkedList {
+    Node head;
+    Node tail;
 
+    public void add(Object item) {
+        Node new_node = new Node(item);
+        if (head == null){
+            head = new_node;
+            tail = head;
+        }
+        else{
+            tail.next = new_node;
+            tail = new_node;
+        }
+    }
 
+    public Node pop() {
+        if (head != null)  {
+            Node temp = head;
+            head = head.next;
+            return temp;
+        }
+        return null;
+    }
+    
+    public override String ToString() {
+        String string_rep = "";
+        Node curr = this.head;
 
+        while (curr != null) {
+            string_rep += curr.item + " ";
 
+            curr = curr.next;
+        }
 
+        return string_rep;
+    } 
 
 }
+

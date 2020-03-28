@@ -1,9 +1,12 @@
 import math
 from stack import Stack
+
+
 class Node:
     def __init__(self, item):
         self.item = item
         self.next = None
+
 
 class LinkedList:
     def __init__(self):
@@ -461,6 +464,8 @@ def osmosis(linky):
         curr = curr.next
 
     linky.first = head_node
+
+
 
 
 if __name__ == "__main__":

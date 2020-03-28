@@ -5,23 +5,13 @@ namespace algorithms
     {
         static void Main(string[] args)
         {
-            ResizableArray r = new ResizableArray();
-            r.append(20);
-            System.Console.WriteLine("Array: " + r + "\nLength: " + r.getLength());
-            r.append(30);
-            System.Console.WriteLine("Array: " + r + "\nLength: " + r.getLength());
-
-            r.append(40);
-            System.Console.WriteLine("Array: " + r + "\nLength: " + r.getLength());
-
-            r.append(50);
-            System.Console.WriteLine("Array: " + r + "\nLength: " + r.getLength());
-
-            r.pop();
-            System.Console.WriteLine("Array: " + r + "\nLength: " + r.getLength());
-
-            r.pop();
-            System.Console.WriteLine("Array: " + r + "\nLength: " + r.getLength());
+            Queue q = new Queue();
+            q.enqueue(10);
+            q.enqueue(20);
+            q.enqueue(30);
+            System.Console.WriteLine(q);
+            q.dequeue();
+            System.Console.WriteLine(q);
 
         }
     }

@@ -1,5 +1,4 @@
 import math
-from stack import Stack
 def flip(list):
     flippedlist = []
     for x in range(len(list)-1,-1,-1):
