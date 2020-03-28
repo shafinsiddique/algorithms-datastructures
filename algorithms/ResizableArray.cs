@@ -3,8 +3,6 @@ using System;
 public class ResizableArray {
     Object[]array = new Object[1];
     int items = 0;
-
-
     public void append(Object item) {
         array[items++] = item;
         if (items == array.Length) {
@@ -48,6 +46,4 @@ public class ResizableArray {
 
         return string_rep;
     }
-
-
 }

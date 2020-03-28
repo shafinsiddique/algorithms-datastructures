@@ -5,14 +5,15 @@ namespace algorithms
     {
         static void Main(string[] args)
         {
-            Queue q = new Queue();
+            TwoStackQueue q = new TwoStackQueue();
             q.enqueue(10);
             q.enqueue(20);
-            q.enqueue(30);
-            System.Console.WriteLine(q);
-            q.dequeue();
-            System.Console.WriteLine(q);
-
+            System.Console.WriteLine(q.pop());
+            System.Console.WriteLine(q.pop());
+            
         }
     }
 }
+
+
+

@@ -95,7 +95,7 @@ public class BackLinkedList {
         }
         return null;
     }
-    
+
     public override String ToString() {
         String string_rep = "";
         Node curr = this.head;
@@ -108,6 +108,6 @@ public class BackLinkedList {
 
         return string_rep;
     } 
-
+    
 }
 

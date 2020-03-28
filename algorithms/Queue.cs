@@ -20,3 +20,34 @@ public class Queue {
         return items.ToString();
     }
 }
+
+public class TwoStackQueue {
+    Stack inbox = new LinkedStack();
+    Stack outbox = new LinkedStack();
+
+    public void enqueue(Object item) {
+        this.inbox.push(item);
+
+    }
+
+    public Object pop() {
+        if (outbox.isEmpty()) {
+            while (!inbox.isEmpty()) {
+                outbox.push(inbox.pop());
+            }
+
+            if (outbox.isEmpty()) {
+                return null;
+
+            }
+
+            return outbox.pop();
+        }
+
+        return outbox.pop();
+    }
+
+
+
+}
+
