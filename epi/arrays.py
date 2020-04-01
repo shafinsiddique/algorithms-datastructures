@@ -3,8 +3,6 @@ def partition(nums: list):
 
     O(n) time and O(N) space.
     """
-
-
     smaller = []
     equal = []
     larger =[]

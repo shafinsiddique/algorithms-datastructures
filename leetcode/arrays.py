@@ -671,6 +671,6 @@ def osmosis_array(arr):
 
 
 
-print(osmosis_array([1,1,2,3]))
+print('hello world')
 
 

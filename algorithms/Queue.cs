@@ -47,7 +47,6 @@ public class TwoStackQueue {
         return outbox.pop();
     }
 
-
-
 }
+
 

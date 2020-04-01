@@ -1,5 +1,5 @@
 using System;
-
+using System.Collections;
 interface Stack {
     public void push(Object item);
     public Object pop();
@@ -49,5 +49,38 @@ public class FixedCapacityStack : Stack {
 
     public Boolean isEmpty(){
         return current <= 0;
+    }
+}
+
+public class MaxStack : Stack {
+    ArrayList stack = new ArrayList();
+    ArrayList max_with_state = new ArrayList();
+
+    public void push(Object item) {
+        stack.Add(item);
+        if ((int)item > (int)max_with_state[max_with_state.Count-1]) {
+            max_with_state.Add((int)item);
+        }
+
+        else {
+            max_with_state.Add(max_with_state[max_with_state.Count-1]);
+        }
+    }
+    public Boolean isEmpty(){ 
+        return stack.Count == 0;
+    }
+    public Object pop() {
+        if (!isEmpty()) {
+            int item = (int)stack[stack.Count-1];
+            stack.RemoveAt(stack.Count-1);
+            max_with_state.RemoveAt(max_with_state.Count-1);
+
+            return item;
+        }
+        return null;
+    }
+
+    public int max() {
+        return (int) max_with_state[max_with_state.Count-1];
     }
 }

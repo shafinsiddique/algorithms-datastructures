@@ -69,6 +69,42 @@ public class LinkedList {
         return string_rep;
     }
 
+    public int getMax() {
+        Node curr = this.first;
+        if (curr == null) {
+            return 0;
+        }
+        
+        else {
+            int max = (int) curr.item;
+            while (curr != null) {
+                if ((int) curr.item > max) {
+                    max = (int) curr.item;
+                }
+                curr = curr.next;
+            }
+
+            return max;
+
+
+        }
+    }
+
+    public void deleteOccurences(int item)  {
+        Node curr = this.first;
+
+        while (curr != null && curr.next != null) {
+            if ((int) curr.next.item == item){
+                curr.next = curr.next.next;
+            }
+
+            curr = curr.next;
+        }
+            
+    }
+
+    
+
 }
 
 public class BackLinkedList {
@@ -86,7 +122,6 @@ public class BackLinkedList {
             tail = new_node;
         }
     }
-
     public Node pop() {
         if (head != null)  {
             Node temp = head;
