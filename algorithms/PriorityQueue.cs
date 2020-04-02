@@ -55,13 +55,45 @@ public class BinaryHeap : PriorityQueue  {
 
         for (int x=0; x<heap.Count; x++) {
             if (x > 0) {
-                string_rep += heap[x] += " ";
+                string_rep += heap[x] + " ";
             }
         }
 
         return string_rep;
     }
 
+    public void sink(int cur_position) {
+        if (cur_position*2 < this.heap.Count) {
+            int left_child = (int) this.heap[cur_position];
+            int right_child = (int) this.heap[(cur_position*2) + 1];
+            int parent = (int) this.heap[cur_position];
+            
+            if (parent < left_child || parent < right_child) {
+                if (left_child > right_child) {
+                    this.heap[cur_position*2] = parent;
+                    this.heap[cur_position] = left_child;
+                    sink(cur_position*2);
+                }
+                else {
+                    this.heap[(cur_position*2)+1] = parent;
+                    this.heap[cur_position] = right_child;
+                    sink((cur_position*2)+1);
+                }
+            }
+        }
+    }
 
+    public int del_max() {
+        if (this.heap.Count > 1) {
+            int max = (int) this.heap[1];
+            int last_leaf = (int) this.heap[this.heap.Count-1];
+            this.heap.RemoveAt(this.heap.Count-1);
+            this.heap[1] = last_leaf;
+            sink(1);
+            return max;
+        }
+
+        return 0;
+    }
     
 }
