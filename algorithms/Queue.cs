@@ -40,7 +40,7 @@ public class TwoStackQueue {
                 return null;
 
             }
-
+            
             return outbox.pop();
         }
 
