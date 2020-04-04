@@ -18,15 +18,18 @@ This is why the observer design pattern is so powerful.
 
 # Interfaces 
 
-Observer Interface:
+    interface Observer {
+        public void update();
+    }
+    
+    interface Subject {
+        public void registerObserver();
+        public void removeObserver();
+        public void notifyObserver();
+        
+    }
 
-update();
 
-Subject Interface:
-
-registerObserver();
-removeObserver();
-notifyObserver();
 
 # An example
 
