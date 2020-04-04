@@ -22,3 +22,15 @@
 /Users/shafinsiddique/PycharmProjects/algorithms-datastructures/algorithms/obj/Debug/netcoreapp3.1/algorithms.dll
 /Users/shafinsiddique/PycharmProjects/algorithms-datastructures/algorithms/obj/Debug/netcoreapp3.1/algorithms.pdb
 /Users/shafinsiddique/PycharmProjects/algorithms-datastructures/algorithms/obj/Debug/netcoreapp3.1/algorithms.genruntimeconfig.cache
+/Users/shafinsiddique/algorithms-datastructures-design/algorithms/bin/Debug/netcoreapp3.1/algorithms.deps.json
+/Users/shafinsiddique/algorithms-datastructures-design/algorithms/bin/Debug/netcoreapp3.1/algorithms.runtimeconfig.json
+/Users/shafinsiddique/algorithms-datastructures-design/algorithms/bin/Debug/netcoreapp3.1/algorithms.runtimeconfig.dev.json
+/Users/shafinsiddique/algorithms-datastructures-design/algorithms/bin/Debug/netcoreapp3.1/algorithms.dll
+/Users/shafinsiddique/algorithms-datastructures-design/algorithms/bin/Debug/netcoreapp3.1/algorithms.pdb
+/Users/shafinsiddique/algorithms-datastructures-design/algorithms/obj/Debug/netcoreapp3.1/algorithms.csprojAssemblyReference.cache
+/Users/shafinsiddique/algorithms-datastructures-design/algorithms/obj/Debug/netcoreapp3.1/algorithms.csproj.CoreCompileInputs.cache
+/Users/shafinsiddique/algorithms-datastructures-design/algorithms/obj/Debug/netcoreapp3.1/algorithms.AssemblyInfoInputs.cache
+/Users/shafinsiddique/algorithms-datastructures-design/algorithms/obj/Debug/netcoreapp3.1/algorithms.AssemblyInfo.cs
+/Users/shafinsiddique/algorithms-datastructures-design/algorithms/obj/Debug/netcoreapp3.1/algorithms.dll
+/Users/shafinsiddique/algorithms-datastructures-design/algorithms/obj/Debug/netcoreapp3.1/algorithms.pdb
+/Users/shafinsiddique/algorithms-datastructures-design/algorithms/obj/Debug/netcoreapp3.1/algorithms.genruntimeconfig.cache

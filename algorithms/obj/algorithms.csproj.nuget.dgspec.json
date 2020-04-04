@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/shafinsiddique/PycharmProjects/algorithms-datastructures/algorithms/algorithms.csproj": {}
+    "/Users/shafinsiddique/algorithms-datastructures-design/algorithms/algorithms.csproj": {}
   },
   "projects": {
-    "/Users/shafinsiddique/PycharmProjects/algorithms-datastructures/algorithms/algorithms.csproj": {
+    "/Users/shafinsiddique/algorithms-datastructures-design/algorithms/algorithms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/shafinsiddique/PycharmProjects/algorithms-datastructures/algorithms/algorithms.csproj",
+        "projectUniqueName": "/Users/shafinsiddique/algorithms-datastructures-design/algorithms/algorithms.csproj",
         "projectName": "algorithms",
-        "projectPath": "/Users/shafinsiddique/PycharmProjects/algorithms-datastructures/algorithms/algorithms.csproj",
+        "projectPath": "/Users/shafinsiddique/algorithms-datastructures-design/algorithms/algorithms.csproj",
         "packagesPath": "/Users/shafinsiddique/.nuget/packages/",
-        "outputPath": "/Users/shafinsiddique/PycharmProjects/algorithms-datastructures/algorithms/obj/",
+        "outputPath": "/Users/shafinsiddique/algorithms-datastructures-design/algorithms/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/shafinsiddique/.nuget/NuGet/NuGet.Config"
