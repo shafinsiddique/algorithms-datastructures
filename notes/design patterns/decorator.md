@@ -1,6 +1,6 @@
 # Decorator Design Pattern
 
-"Classes should be open for extension, but closed for modification."
+"Classes should be open for extension, but closed for modification." - The Open Closed Principle
 
 The decorator pattern attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
 
