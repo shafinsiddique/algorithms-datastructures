@@ -2,7 +2,7 @@ using System;
 
 public interface SymbolTable {
     public void insert(String key, Object value);
-    public Boolean search(String key); 
+    public Object get(String key); 
 }
 
 public class LinkedListSymbolTable : SymbolTable {
@@ -29,17 +29,17 @@ public class LinkedListSymbolTable : SymbolTable {
         this.head= null;
     }
 
-    public Boolean search(String key) {
+    public Object get(String key) {
         Node curr = this.head;
 
         while (curr != null) {
             if (curr.key == key){
-                return true;
+                return curr.value;
             }
             curr = curr.next;
         }
 
-        return false;
+        return null;
     }
 
     private void replace(String key, Object value) {
@@ -55,7 +55,7 @@ public class LinkedListSymbolTable : SymbolTable {
         }
     }
     public void insert(String key, Object value) {
-        if (search(key)) {
+        if (search(key)!= null) {
             replace(key, value);
         }
 
@@ -78,4 +78,6 @@ public class LinkedListSymbolTable : SymbolTable {
         return string_rep;
 
     }
+
+   
 }
