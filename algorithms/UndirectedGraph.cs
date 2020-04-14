@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 
-public class UndirectedGraph {
+
+public class UndirectedGraph : Graph{
     private int vertices;
     public HashSet<int>[] adj;
 
@@ -26,6 +27,7 @@ public class UndirectedGraph {
         return this.adj[v].Contains(w);
     }
 
+
     public override String ToString() {
         String string_rep = "";
 
@@ -47,55 +49,9 @@ public class UndirectedGraph {
         return this.vertices;
     }
 
-}
-
-public class DepthFirstPaths {
-    private Boolean[] marked;
-    private int[] edgeTo;
-    private int s;
-
-
-    public DepthFirstPaths(UndirectedGraph graph, int vertex) {
-        s = vertex;
-        marked = new Boolean[graph.Length()];
-        edgeTo = new int[graph.Length()];
-        for (int x=0; x<graph.Length(); x++) {
-            marked[x] = false;
-
-
-        }
-
-        DFS(graph, vertex);
-
-    }
-
-    private void DFS(UndirectedGraph graph, int v) {
-        marked[v] = true;
-        foreach (int edge in graph.adj[v]) {
-            if (!marked[edge]) {
-                edgeTo[edge] = v;
-                DFS(graph, edge);
-            }
-        }
-    }
-
-    public Boolean hasPath(int i){
-        return marked[i];
-    }
-
-    public void findPath(int v) {
-        if (hasPath(v)) {
-            Stack stack =  new LinkedStack();
-            int curr = v;
-            System.Console.WriteLine(v);
-            while (edgeTo[curr]!=s) {
-                System.Console.WriteLine(edgeTo[curr]);
-                curr = edgeTo[curr];
-            }
-            System.Console.WriteLine(s);
-
-        }
-
+    public HashSet<int>[] getAdj() {
+        return this.adj;
     }
 
 }
+
