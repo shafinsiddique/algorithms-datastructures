@@ -5,10 +5,10 @@ namespace algorithms
     {
         static void Main(string[] args)
         { 
-            SymbolTable s = new LinkedListSymbolTable();
-            s.insert("Hello",1);
-            s.insert("Hello",4);
-            System.Console.WriteLine(s);
+            UndirectedGraph ug = new UndirectedGraph(5);
+            ug.addEdge(2,3);
+            ug.addEdge(1,2);
+            System.Console.WriteLine(ug);
 
         }
     }
