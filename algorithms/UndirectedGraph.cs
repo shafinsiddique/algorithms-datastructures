@@ -56,6 +56,7 @@ public class DepthFirstPaths {
 
 
     public DepthFirstPaths(UndirectedGraph graph, int vertex) {
+        s = vertex;
         marked = new Boolean[graph.Length()];
         edgeTo = new int[graph.Length()];
         for (int x=0; x<graph.Length(); x++) {
@@ -81,4 +82,20 @@ public class DepthFirstPaths {
     public Boolean hasPath(int i){
         return marked[i];
     }
+
+    public void findPath(int v) {
+        if (hasPath(v)) {
+            Stack stack =  new LinkedStack();
+            int curr = v;
+            System.Console.WriteLine(v);
+            while (edgeTo[curr]!=s) {
+                System.Console.WriteLine(edgeTo[curr]);
+                curr = edgeTo[curr];
+            }
+            System.Console.WriteLine(s);
+
+        }
+
+    }
+
 }
