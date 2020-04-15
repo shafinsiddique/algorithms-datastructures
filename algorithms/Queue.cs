@@ -6,6 +6,10 @@ public class Queue {
         items.add(item);
     }
 
+    public Boolean isEmpty() {
+        return items.isEmpty();
+    }
+
     public Object dequeue() {
         Node n = items.pop();
 

@@ -19,6 +19,10 @@ public class LinkedStack : Stack {
 
     public Boolean isEmpty() {
         return items.isEmpty();
+    }
+
+    public override String ToString() {
+        return items.ToString();
     }    
 }
 

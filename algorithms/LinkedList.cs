@@ -111,6 +111,9 @@ public class BackLinkedList {
     Node head;
     Node tail;
 
+    public Boolean isEmpty() {
+        return head == null;
+    }
     public void add(Object item) {
         Node new_node = new Node(item);
         if (head == null){
