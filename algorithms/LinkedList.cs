@@ -1,36 +1,45 @@
 using System;
 
-public class Node {
-        public Object item;
-        public Node next;
-        public Node(Object item) {
-            this.item = item;
-            this.next = null;
-        }
-
-        public override String ToString() {
-            return this.item.ToString();
-        }
+public class Node
+{
+    public Object item;
+    public Node next;
+    public Node(Object item)
+    {
+        this.item = item;
+        this.next = null;
     }
-public class LinkedList {
-    Node first;
-    
 
-    public LinkedList() {
+    public override String ToString()
+    {
+        return this.item.ToString();
+    }
+}
+public class LinkedList
+{
+    Node first;
+
+
+    public LinkedList()
+    {
         this.first = null;
     }
 
-    public Boolean isEmpty() {
+    public Boolean isEmpty()
+    {
         return this.first == null;
     }
-    public void add(Object item) {
+    public void add(Object item)
+    {
         Node new_node = new Node(item);
         new_node.next = this.first;
         this.first = new_node;
     }
 
-    public Object pop()  {
-        if (this.first != null) {
+    public Object pop()
+    {
+        if (this.first != null)
+        {
             Node first;
             first = this.first;
             this.first = this.first.next;
@@ -40,27 +49,33 @@ public class LinkedList {
         return null;
     }
 
-    public void append(Object item){ 
+    public void append(Object item)
+    {
         Node new_node = new Node(item);
-        if (isEmpty()) {
+        if (isEmpty())
+        {
             this.first = new_node;
         }
 
-        else { 
+        else
+        {
             Node curr = this.first;
 
-            while (curr.next != null) {
+            while (curr.next != null)
+            {
                 curr = curr.next;
             }
             curr.next = new_node;
         }
     }
 
-    public override String ToString() {
+    public override String ToString()
+    {
         String string_rep = "";
         Node curr = this.first;
 
-        while (curr != null) {
+        while (curr != null)
+        {
             string_rep += curr.item + " ";
 
             curr = curr.next;
@@ -69,17 +84,22 @@ public class LinkedList {
         return string_rep;
     }
 
-    public int getMax() {
+    public int getMax()
+    {
         Node curr = this.first;
-        if (curr == null) {
+        if (curr == null)
+        {
             return 0;
         }
-        
-        else {
-            int max = (int) curr.item;
-            while (curr != null) {
-                if ((int) curr.item > max) {
-                    max = (int) curr.item;
+
+        else
+        {
+            int max = (int)curr.item;
+            while (curr != null)
+            {
+                if ((int)curr.item > max)
+                {
+                    max = (int)curr.item;
                 }
                 curr = curr.next;
             }
@@ -90,43 +110,53 @@ public class LinkedList {
         }
     }
 
-    public void deleteOccurences(int item)  {
+    public void deleteOccurences(int item)
+    {
         Node curr = this.first;
 
-        while (curr != null && curr.next != null) {
-            if ((int) curr.next.item == item){
+        while (curr != null && curr.next != null)
+        {
+            if ((int)curr.next.item == item)
+            {
                 curr.next = curr.next.next;
             }
 
             curr = curr.next;
         }
-            
+
     }
 
-    
+
 
 }
 
-public class BackLinkedList {
+public class BackLinkedList
+{
     Node head;
     Node tail;
 
-    public Boolean isEmpty() {
+    public Boolean isEmpty()
+    {
         return head == null;
     }
-    public void add(Object item) {
+    public void add(Object item)
+    {
         Node new_node = new Node(item);
-        if (head == null){
+        if (head == null)
+        {
             head = new_node;
             tail = head;
         }
-        else{
+        else
+        {
             tail.next = new_node;
             tail = new_node;
         }
     }
-    public Node pop() {
-        if (head != null)  {
+    public Node pop()
+    {
+        if (head != null)
+        {
             Node temp = head;
             head = head.next;
             return temp;
@@ -134,18 +164,20 @@ public class BackLinkedList {
         return null;
     }
 
-    public override String ToString() {
+    public override String ToString()
+    {
         String string_rep = "";
         Node curr = this.head;
 
-        while (curr != null) {
+        while (curr != null)
+        {
             string_rep += curr.item + " ";
 
             curr = curr.next;
         }
 
         return string_rep;
-    } 
-    
+    }
+
 }
 

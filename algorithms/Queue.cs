@@ -1,49 +1,61 @@
 using System;
-public class Queue {
+public class Queue
+{
     BackLinkedList items = new BackLinkedList();
 
-    public void enqueue(object item) {
+    public void enqueue(object item)
+    {
         items.add(item);
     }
 
-    public Boolean isEmpty() {
+    public Boolean isEmpty()
+    {
         return items.isEmpty();
     }
 
-    public Object dequeue() {
+    public Object dequeue()
+    {
         Node n = items.pop();
 
-        if (n != null) {
+        if (n != null)
+        {
             return n.item;
         }
 
         return null;
     }
 
-    public override String ToString()  {
+    public override String ToString()
+    {
         return items.ToString();
     }
 }
 
-public class TwoStackQueue {
+public class TwoStackQueue
+{
     Stack inbox = new LinkedStack();
     Stack outbox = new LinkedStack();
 
-    public void enqueue(Object item) {
+    public void enqueue(Object item)
+    {
         this.inbox.push(item);
     }
 
-    public Object pop() {
-        if (outbox.isEmpty()) {
-            while (!inbox.isEmpty()) {
+    public Object pop()
+    {
+        if (outbox.isEmpty())
+        {
+            while (!inbox.isEmpty())
+            {
                 outbox.push(inbox.pop());
             }
 
-            if (outbox.isEmpty()) {
+            if (outbox.isEmpty())
+            {
                 return null;
 
             }
-            
+
             return outbox.pop();
         }
 
