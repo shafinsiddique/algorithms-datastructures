@@ -31,7 +31,6 @@ public class TwoStackQueue {
 
     public void enqueue(Object item) {
         this.inbox.push(item);
-
     }
 
     public Object pop() {
