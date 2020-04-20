@@ -9,4 +9,17 @@ public class DirectedGraph : Graph
         adj[v1].Add(v2);
     }
 
+
+    public DirectedGraph reverse() {
+        DirectedGraph reversed_graph = new DirectedGraph(vertices);
+        for(int x=0; x<vertices; x++) {
+            foreach(int edge in adj[x]) {
+                reversed_graph.addEdge(edge, x);
+            }
+        }
+
+        return reversed_graph;
+    }
+
+
 }

@@ -51,7 +51,7 @@ public abstract class PathFinder
     {
         return marked;
     }
-
+    
     public int[] getEdgeTo()
     {
         return edgeTo;

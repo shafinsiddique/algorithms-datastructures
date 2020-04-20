@@ -3,7 +3,7 @@ using System.Collections;
 public class TopologicalSort
 {
     Boolean[] marked;
-    Stack topologicalOrder = new LinkedStack();
+    LinkedStack topologicalOrder = new LinkedStack();
 
     public TopologicalSort(Graph graph)
     {
@@ -22,6 +22,10 @@ public class TopologicalSort
             }
         }
 
+    }
+
+    public LinkedStack getOrder() {
+        return topologicalOrder;
     }
 
     public void DFS(Graph graph, int vertex)
