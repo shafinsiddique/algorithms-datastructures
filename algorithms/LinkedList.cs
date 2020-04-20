@@ -44,7 +44,7 @@ public class LinkedList
             first = this.first;
             this.first = this.first.next;
 
-            return first;
+            return first.item;
         }
         return null;
     }

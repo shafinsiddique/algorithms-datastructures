@@ -24,6 +24,10 @@ public class TopologicalSort
 
     }
 
+    public static LinkedStack sort(DirectedGraph graph) {
+        TopologicalSort ts = new TopologicalSort(graph);
+        return ts.getOrder();
+    }
     public LinkedStack getOrder() {
         return topologicalOrder;
     }

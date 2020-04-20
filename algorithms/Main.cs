@@ -5,17 +5,17 @@ namespace algorithms
     {
         static void Main(string[] args)
         {
-            DirectedGraph ug = new DirectedGraph(5);
+            DirectedGraph ug = new DirectedGraph(4);
             ug.addEdge(0, 1);
             ug.addEdge(1, 2);
-            ug.addEdge(3, 4);
-            ug.addEdge(4,1);
+            // ug.addEdge(1,2);
+            // ug.addEdge(2,3);
+            StrongComponents scc = new StrongComponents(ug);
+            System.Console.WriteLine(scc.isConnected(2, 3));
 
-            GraphProblems gp = new GraphProblems(ug);
-            System.Console.WriteLine(gp.hasCycle());
-            
- 
-           
+
+
+
         }
     }
 }
