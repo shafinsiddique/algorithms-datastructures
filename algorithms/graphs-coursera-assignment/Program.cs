@@ -8,9 +8,7 @@ namespace graphs_coursera_assignment
         {
             WordNet wn = new WordNet("synsets.txt","hypernym.txt");
 
-            foreach (String noun in wn.getNouns()) {
-                System.Console.WriteLine(noun);
-            }
+            System.Console.WriteLine(wn.isNoun("Computer"));
 
         }
     }

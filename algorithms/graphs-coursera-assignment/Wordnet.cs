@@ -36,4 +36,7 @@ public class WordNet
         return nouns;
     }
 
+    public Boolean isNoun(String word) {
+        return nouns.Contains(word);
+    }
 }
