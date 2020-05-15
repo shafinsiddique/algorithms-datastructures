@@ -75,7 +75,6 @@ def dutch_national_flag_constant_space(arr, pivot):
 
         # else, this element is not smaller than pivot, so we wanna see if we can find an
         # element bigger than pivot to replace this with.
-
         for y in range(x):
             if arr[y] > pivot:
                 arr[y],arr[x] = arr[x], arr[y]
