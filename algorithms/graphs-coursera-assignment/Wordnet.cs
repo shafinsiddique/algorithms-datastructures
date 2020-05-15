@@ -10,7 +10,6 @@ public class WordNet
 
 
     }
-
     private void addAllNouns(String synsets)
     {
         char[] lineseperators = new char[] { ',' };
@@ -35,7 +34,6 @@ public class WordNet
     public HashSet<String> getNouns() {
         return nouns;
     }
-
     public Boolean isNoun(String word) {
         return nouns.Contains(word);
     }
