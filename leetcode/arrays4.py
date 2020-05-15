@@ -3,7 +3,6 @@ def two_sum(arr, target):
     target.
 
     guaranteed to have a solution."""
-
     elements_dict = {}
 
     for x in range(len(arr)):
@@ -11,7 +10,7 @@ def two_sum(arr, target):
 
     for x in range(len(arr)):
         if target - arr[x] in elements_dict and elements_dict[target-arr[x]] != x:
-            return [x, elements_dict[target-arr[x]]]
+            return [arr[x], target-arr[x]]
 
 def best_time_to_buy_and_sell_stock(arr):
     """the intuition behind this algorithm is that you want the min element on the left
@@ -34,4 +33,53 @@ def best_time_to_buy_and_sell_stock(arr):
 
     return max_profit
 
-print(best_time_to_buy_and_sell_stock([7,1,5,3,6,4]))
+
+def three_sum_equality(arr1, arr2):
+    arr1_element_count = {}
+    arr_2_element_count = {}
+    for x in range(3):
+        if arr1[x] in arr1_element_count:
+            arr1_element_count[arr1[x]] += 1
+
+        else:
+            arr1_element_count[arr1[x]] = 1
+
+        if arr2[x] in arr_2_element_count:
+            arr_2_element_count[arr2[x]] += 1
+
+        else:
+            arr_2_element_count[arr2[x]] = 1
+
+    return arr1_element_count == arr_2_element_count
+
+
+
+def three_sum(arr):
+    '''given an arr, return the indices of three indices that sum up to 0.
+
+    the intuition behind this problem is that two sum finds TWO integers that add up to
+    a value. 0 = X + Y + Z. If we have x fixed, we can do a check to find if there's
+    two values that sum to 0-x.
+
+    x + y + z = 0
+
+    y + z = 0-x.'''
+    solutions = []
+    for x in range(len(arr)):
+        two_sum_result = two_sum(arr[:x] + arr[x+1:], 0-arr[x])
+
+        if two_sum_result:
+            list_of_values = [arr[x], two_sum_result[0], two_sum_result[1]]
+
+            unique = True
+
+            for sets in solutions:
+                if three_sum_equality(list_of_values, sets):
+                    unique = False
+            if unique:
+                solutions.append(list_of_values)
+
+    return solutions
+
+print(three_sum([-1, 0, 1, 2, -1, -4]))
+
