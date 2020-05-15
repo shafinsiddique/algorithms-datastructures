@@ -81,5 +81,26 @@ def three_sum(arr):
 
     return solutions
 
-print(three_sum([-1, 0, 1, 2, -1, -4]))
+
+def product_of_array_except_self(arr):
+    """given an array arr, return an output array such that output[i] = product of all
+    elements in arr except ar[i].
+
+    The simple O(N) time approach would be to use division.
+
+    """
+
+    total_product = 1
+    output = []
+    for elements in arr:
+        print(elements)
+        total_product *= elements
+
+    for elements in arr:
+        output.append(total_product/elements)
+
+    return output
+
+
+print(product_of_array_except_self([1,2,3,4]))
 
