@@ -93,7 +93,6 @@ def product_of_array_except_self(arr):
     total_product = 1
     output = []
     for elements in arr:
-        print(elements)
         total_product *= elements
 
     for elements in arr:
@@ -102,5 +101,34 @@ def product_of_array_except_self(arr):
     return output
 
 
-print(product_of_array_except_self([1,2,3,4]))
+def product_of_array_without_divison(arr):
+    """
+    same q as above but try to do it without division.
+    This approach calculates the product for each element to its left, and to its right.
+    and then calculates the overall product without that element.
+    """
+    left_products = []
+    cur_product = 1
+    last_value = 1
+    for x in range(len(arr)):
+        new_prod = cur_product*last_value
+        left_products.append(new_prod)
+        last_value = arr[x]
+        cur_product = new_prod
+    right_products= [0]*len(arr)
+    cur_product = 1
+    last_value = 1
+    for x in range(len(arr)-1,-1,-1):
+        new_prod = cur_product*last_value
+        right_products[x] = new_prod
+        last_value = arr[x]
+        cur_product = new_prod
+
+    output = []
+    for x in range(len(arr)):
+        output.append(left_products[x] * right_products[x])
+
+    return output
+
+print(product_of_array_without_divison([1,2,3,4]))
 
