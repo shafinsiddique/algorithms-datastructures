@@ -241,4 +241,21 @@ def merge_two_sorted_arrays(arr1, arr2):
 
     return merged + arr1[arr1_counter:] + arr2[arr2_counter:]
 
-print(merge_two_sorted_arrays([7,8,9,10],[1,4,11,12]))
+
+def move_zeroes(arr):
+    """move all zeroes to the end."""
+
+    zero = len(arr)-1
+    non_zero = 0
+
+    while non_zero < zero:
+        if arr[non_zero] == 0:
+            arr[non_zero], arr[zero] = arr[zero], arr[non_zero]
+            zero -=1 # since we know that element is now a zero.
+
+        else:
+            non_zero += 1 # since we know this element is not a zero.
+
+l = [1,2,0,4,1,0,0]
+move_zeroes(l)
+print(l)
