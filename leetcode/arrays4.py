@@ -179,4 +179,51 @@ def array_partition_1(arr):
 
     return sum
 
-print(array_partition_1([1,2,3,4]))
+def majority_element(arr):
+    elements_counter = {}
+
+    for elements in arr:
+        if elements in elements_counter:
+            elements_counter[elements] += 1
+
+        else:
+            elements_counter[elements] = 1
+
+
+    max_key = None
+    max_counter = None
+
+    for elements in arr:
+        if max_key:
+            if elements_counter[elements] > max_counter:
+                max_counter = elements_counter[elements]
+                max_key = elements
+
+        else:
+            max_key = elements
+            max_counter = elements_counter[elements]
+
+    return max_key
+
+def plus_one(arr):
+    """given an arr of integers, add 1 to it."""
+
+    output_reversed = []
+    carried = 1
+    for x in range(len(arr)-1,-1,-1):
+        sum_number = arr[x] + carried
+
+        if sum_number > 10:
+            carried = 1
+            output_reversed.append(sum_number % 10)
+
+        else:
+            carried = 0
+            output_reversed.append(sum_number)
+    output = []
+    for x in range(len(output_reversed)-1,-1,-1):
+        output.append(output_reversed[x])
+
+    return output
+
+print(plus_one([1,2,9]))
