@@ -130,5 +130,48 @@ def product_of_array_without_divison(arr):
 
     return output
 
-print(product_of_array_without_divison([1,2,3,4]))
+def odd_even(arr):
+    """partition the arr in such a way such that all even elements come before alll
+    the odd elements."""
 
+    curr_even = 0
+    last_odd = len(arr)-1
+
+    while curr_even < last_odd:
+        if arr[curr_even] % 2 != 0:
+            arr[curr_even], arr[last_odd] = arr[last_odd], arr[curr_even]
+            last_odd -= 1
+
+        else:
+            curr_even += 1
+
+def dutch_partitioning_problem(arr, pivot):
+    """partition the array such that all elements less than the pivot appear first, followed
+    by elements equaling the pivot and then finally elements greater than pivot.
+    """
+
+    # first pass, bring all small elements to front..
+
+    small = 0
+
+    for x in range(len(arr)):
+        if arr[x] < pivot:
+            arr[x], arr[small] = arr[small],arr[x]
+            small += 1
+
+    larger = l
+    for x in range(len(arr)-1,-1,-1):
+        if arr[x] < pivot:
+            break
+
+        elif arr[x] > pivot:
+            arr[x], arr[larger] = arr[larger], arr[x]
+            larger -=1
+
+
+
+
+
+l = [1,2,3,4,5,6,7,8]
+odd_even(l)
+print(l)
