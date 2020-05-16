@@ -168,10 +168,15 @@ def dutch_partitioning_problem(arr, pivot):
             arr[x], arr[larger] = arr[larger], arr[x]
             larger -=1
 
+def array_partition_1(arr):
+    """given an array of 2n elements, find the maximum sum that can found by summing up
+    min (a, b) such that a and b are elements of arr."""
 
+    sorted_arr = sorted(arr)
+    sum = 0
+    for x in range(0, len(arr), 2):
+        sum += sorted_arr[x]
 
+    return sum
 
-
-l = [1,2,3,4,5,6,7,8]
-odd_even(l)
-print(l)
+print(array_partition_1([1,2,3,4]))
