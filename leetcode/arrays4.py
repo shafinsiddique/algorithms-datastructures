@@ -226,4 +226,19 @@ def plus_one(arr):
 
     return output
 
-print(plus_one([1,2,9]))
+def merge_two_sorted_arrays(arr1, arr2):
+    arr1_counter = 0
+    arr2_counter = 0
+    merged = []
+    while arr1_counter < len(arr1) and arr2_counter < len(arr2):
+        if arr1[arr1_counter] < arr2[arr2_counter]:
+            merged.append(arr1[arr1_counter])
+            arr1_counter += 1
+
+        else:
+            merged.append(arr2[arr2_counter])
+            arr2_counter += 1
+
+    return merged + arr1[arr1_counter:] + arr2[arr2_counter:]
+
+print(merge_two_sorted_arrays([7,8,9,10],[1,4,11,12]))
