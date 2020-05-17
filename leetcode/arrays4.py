@@ -256,6 +256,58 @@ def move_zeroes(arr):
         else:
             non_zero += 1 # since we know this element is not a zero.
 
-l = [1,2,0,4,1,0,0]
-move_zeroes(l)
-print(l)
+def best_time_to_buy_and_sell_stock_ii(arr):
+    """
+    the algorithm I am thinking of for this question is for now a brute force approach.
+
+    algorithm :
+
+    - iterate through the array, consider buying for that day.
+    - find the next greater element that has a lower element after it.
+        - if no lower element, simply find the max between this element and the end
+        of the array. break the loop.
+
+        - if lower element, use the next greater element.
+
+    - if no greater element, profit is 0 for the day and move to the next element.
+    """
+
+    profits = []
+    current_index = 0
+
+    while current_index < len(arr):
+        buy_price = arr[current_index]
+        next_greater_element, lower_after_next_greater_element = None, None
+        iterator = current_index + 1
+
+        while iterator < len(arr):
+            if next_greater_element:
+                if arr[iterator] < arr[next_greater_element]:
+                    lower_after_next_greater_element = iterator
+                    break
+            else:
+                if arr[iterator] > arr[current_index]:
+                    next_greater_element = iterator
+
+            iterator += 1
+
+        if next_greater_element:
+            if lower_after_next_greater_element:
+                sell_price = max(arr[current_index+1:lower_after_next_greater_element])
+                current_index = lower_after_next_greater_element
+
+            else:
+                sell_price = max(arr[current_index+1:])
+                current_index = len(arr)
+
+            profits.append(sell_price - buy_price)
+
+
+
+        else:
+            profits.append(0)
+            current_index += 1
+
+    return sum(profits)
+
+print(best_time_to_buy_and_sell_stock_ii([7,6,4,3,1]))
