@@ -302,12 +302,66 @@ def best_time_to_buy_and_sell_stock_ii(arr):
 
             profits.append(sell_price - buy_price)
 
-
-
         else:
             profits.append(0)
             current_index += 1
 
     return sum(profits)
 
-print(best_time_to_buy_and_sell_stock_ii([7,6,4,3,1]))
+
+def best_time_to_buy_and_sell_stock_II_optimized(arr):
+    """this is optimized approach of buy and sell stock II. In O(n) time and space.
+
+    The algorithm Im thinking of is:
+
+    - initially, set the buy price to the first element (if no first element,
+    0 profit overall, return 0)
+    - iterate through the array trying to find a sell price for the current buy price we just
+    in.
+    - if we find an element that is greater than our buy price, we declare that as a
+    potential sell price. Notice that I said potential sell price and not just sell price.
+    This is because there might be an element after the potential sell price
+    that is greater than the current sellprice.  We will have a determined sell price
+    when we find an element after the sell price that is LOWER than the current sell price.
+    that is when we sell the stock and buy it at the new price we just found.
+    - Before we have sold our stock or found a potential sell price, if we see an element
+    that is lower than the current buy price, we set our new price to that amount.
+    this is because any profit we could have made at the earlier price, we are guaranteed
+    to make more now that we have an even lower price.
+    """
+    if arr == []:
+        return 0
+
+    buy_price = arr[0]
+    potential_sell_price = None
+    sold = False
+    curr_index = 0
+    profits = []
+
+    while curr_index < len(arr):
+        if not potential_sell_price: # no potential sell price for the price we bought at, try to find a sell price.
+            if arr[curr_index] > buy_price:
+                potential_sell_price = arr[curr_index]
+            else: # found a price lower than current buy price.
+                buy_price = arr[curr_index]
+
+        else: # there is a potential sell price, we either confirm to sell or try to find a better price.
+            if arr[curr_index] < potential_sell_price: # found a price lower than the sell price.
+                # we can confirm the previous sale and buy at a new price.
+                profits.append(potential_sell_price - buy_price)
+                potential_sell_price = None
+                buy_price = arr[curr_index]
+
+            elif arr[curr_index] > potential_sell_price: # found an even better sell price.
+                # since this is greater, we can ensure greater profit.
+                potential_sell_price = arr[curr_index]
+
+        curr_index += 1
+
+    if potential_sell_price:
+        profits.append(potential_sell_price - buy_price)
+
+    return sum(profits)
+
+
+print(best_time_to_buy_and_sell_stock_II_optimized([7,6,4,3,1]))
