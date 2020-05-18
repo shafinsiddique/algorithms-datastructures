@@ -91,7 +91,6 @@ def dutch_national_flag_problem(arr, pivot):
             arr[x], arr[smaller] = arr[smaller], arr[x]
             smaller += 1
 
-
     # pass 2:
     larger = len(arr)-1
 
