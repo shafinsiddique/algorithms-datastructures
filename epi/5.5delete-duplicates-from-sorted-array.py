@@ -12,9 +12,6 @@ def remove_duplicates_from_sorted_array(arr):
     list that we previously set. If there is, first we place the current element in that None
     spot in the list, and make the current element None.
 
-    the analysis for this algorithm is O(n) runtime and o(1) space. We delete all
-    duplicates in one pass.
-
     """
 
     if len(arr) > 1:
@@ -28,7 +25,6 @@ def remove_duplicates_from_sorted_array(arr):
                 arr[none_element] = arr[x]
                 current_valid_index = none_element
                 arr[x] = None
-                none_element = x
 
             if arr[current_valid_index] == arr[element_to_compare_with]:
                 arr[current_valid_index] = None
@@ -36,3 +32,6 @@ def remove_duplicates_from_sorted_array(arr):
 
             else:
                 element_to_compare_with += 1
+
+                if none_element:
+                    none_element += 1

@@ -390,7 +390,6 @@ def remove_duplicates_from_sorted_array(arr):
                 arr[none_element] = arr[x]
                 current_valid_index = none_element
                 arr[x] = None
-                none_element = x
 
             if arr[current_valid_index] == arr[element_to_compare_with]:
                 arr[current_valid_index] = None
@@ -398,6 +397,10 @@ def remove_duplicates_from_sorted_array(arr):
 
             else:
                 element_to_compare_with += 1
+
+                if none_element:
+                    none_element += 1
+
 
 def find_all_duplicates_in_array(arr):
     """tricky algorithm.
@@ -420,5 +423,6 @@ def find_all_duplicates_in_array(arr):
             arr[index_to_check] = -arr[index_to_check]
 
     return output
-
-print(find_all_duplicates_in_array([4,3,2,7,8,2,3,1]))
+l = [1,1,1,1,1,1,1,2,3,4,4,5,5]
+remove_duplicates_from_sorted_array(l)
+print(l)
