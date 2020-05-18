@@ -34,3 +34,21 @@ def remove_duplicates_from_sorted_array(arr):
 
                 if none_element:
                     none_element += 1
+
+def shorter_version(arr):
+    if len(arr) > 1:
+        element_to_compare_with = 0
+
+        for x in range(1, len(arr)):
+            current_valid_element = x
+            if arr[element_to_compare_with+1] is None:
+                arr[element_to_compare_with+1] = arr[x]
+                arr[x] = None
+                current_valid_element = element_to_compare_with + 1
+
+            if arr[current_valid_element] == arr[element_to_compare_with]:
+                arr[current_valid_element] = None
+
+            else:
+                element_to_compare_with += 1
+
