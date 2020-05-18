@@ -13,7 +13,6 @@ def remove_duplicates_from_sorted_array(arr):
     spot in the list, and make the current element None.
 
     """
-
     if len(arr) > 1:
         element_to_compare_with = 0
         none_element = None

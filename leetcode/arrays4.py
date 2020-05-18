@@ -423,6 +423,23 @@ def find_all_duplicates_in_array(arr):
             arr[index_to_check] = -arr[index_to_check]
 
     return output
-l = [1,1,1,1,1,1,1,2,3,4,4,5,5]
-remove_duplicates_from_sorted_array(l)
-print(l)
+
+def merge_intervals(intervals):
+    """given a collection of intervals, merge all overlapping intervals."""
+
+    merged_intervals = []
+
+    if intervals:
+        intervals = sorted(intervals, key=lambda x: x[0])
+        merged_intervals.append(intervals[0])
+
+        for x in range(1, len(intervals)):
+            if merged_intervals[-1][0]<=intervals[x][0]<=merged_intervals[-1][1]:
+                merged_intervals[-1][1] = intervals[x][1]
+
+            else:
+                merged_intervals.append(intervals[x])
+
+    return merged_intervals
+
+print(merge_intervals([[1,4],[4,5]]))
