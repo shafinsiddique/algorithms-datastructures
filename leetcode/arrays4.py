@@ -334,7 +334,6 @@ def best_time_to_buy_and_sell_stock_II_optimized(arr):
 
     buy_price = arr[0]
     potential_sell_price = None
-    sold = False
     curr_index = 0
     profits = []
 
@@ -400,6 +399,26 @@ def remove_duplicates_from_sorted_array(arr):
             else:
                 element_to_compare_with += 1
 
-l = [1,2,2,3,4]
-remove_duplicates_from_sorted_array(l)
-print(l)
+def find_all_duplicates_in_array(arr):
+    """tricky algorithm.
+
+    the key idea is that for any index i in arr, arr[i]-1 is a valid index.
+
+    we iterate through the array. We check the index of arr[x] - 1.
+    because thats a valid index. if that index is negative, it means there was another
+    element with that value, therefore duplicate.
+
+    """
+    output = []
+
+    for x in range(len(arr)):
+        index_to_check = abs(arr[x])-1
+
+        if arr[index_to_check] < 0:
+            output.append(index_to_check+1)
+        else:
+            arr[index_to_check] = -arr[index_to_check]
+
+    return output
+
+print(find_all_duplicates_in_array([4,3,2,7,8,2,3,1]))
