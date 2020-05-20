@@ -467,33 +467,44 @@ def container_with_most_water(arr):
     return area
 
 def three_sum_closest(arr, target):
-    """variant of 3sum."""
-
+    """3sum closest problem, find 3 elements that are the closest to target."""
+    result = arr[0]+arr[1]+arr[2]
     arr = sorted(arr)
-    diff = float('inf')
-
     for x in range(len(arr)):
-        low = x+1
-        hi = len(arr)-1
+        l_pointer = x+1
+        r_pointer = len(arr)-1
 
-        while low < hi:
-            current_sum = arr[x] + arr[low] + arr[hi]
+        while l_pointer < r_pointer:
+            cur_sum = arr[x] + arr[l_pointer] + arr[r_pointer]
 
-            if abs(target-current_sum) < abs(diff):
-                diff = target - current_sum
-
-            if current_sum < target:
-                low += 1
+            if cur_sum > target:
+                r_pointer -=1
 
             else:
-                hi -= 1
-        if diff == 0 or target <= arr[x]:
-            break
+                l_pointer += 1
 
-    return target - diff
+            if abs(target - cur_sum) < abs(target - result):
+                result = cur_sum
+
+    return result
+
+def two_sum_sorted(arr, target):
+    """given a sorted array, find two elements that add up to target."""
+
+    l_pointer = 0
+    r_pointer = len(arr) - 1
+
+    while l_pointer < r_pointer:
+        if arr[l_pointer] + arr[r_pointer] == target:
+            return [arr[l_pointer], arr[r_pointer]]
+
+        elif arr[l_pointer] + arr[r_pointer] > target:
+            r_pointer -= 1
+
+        else:
+            l_pointer += 1
 
 
-print(three_sum_closest([-1, 2, 1, -4], 1))
 
 
 
