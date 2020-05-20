@@ -442,4 +442,32 @@ def merge_intervals(intervals):
 
     return merged_intervals
 
-print(merge_intervals([[1,4],[4,5]]))
+
+def container_with_most_water(arr):
+    """
+    The intutition behind this algorithm is that we will have two pointers,
+    looking at the area.
+    later we move the pointer with the lower height. This is because the greater
+    the height, the greater the area."""
+
+    l_pointer = 0
+    r_pointer = len(arr)-1
+    area = 0
+
+    while l_pointer < r_pointer:
+        min_height = min(arr[l_pointer], arr[r_pointer])
+        area = max([(r_pointer - l_pointer)*min_height, area])
+
+        if arr[l_pointer] == min_height:
+            l_pointer += 1
+
+        else:
+            r_pointer -= 1
+
+    return area
+
+print(container_with_most_water([1,8,6,2,5,4,8,3,7]))
+
+
+
+
