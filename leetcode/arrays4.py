@@ -466,8 +466,34 @@ def container_with_most_water(arr):
 
     return area
 
-print(container_with_most_water([1,8,6,2,5,4,8,3,7]))
+def three_sum_closest(arr, target):
+    """variant of 3sum."""
 
+    arr = sorted(arr)
+    diff = float('inf')
+
+    for x in range(len(arr)):
+        low = x+1
+        hi = len(arr)-1
+
+        while low < hi:
+            current_sum = arr[x] + arr[low] + arr[hi]
+
+            if abs(target-current_sum) < abs(diff):
+                diff = target - current_sum
+
+            if current_sum < target:
+                low += 1
+
+            else:
+                hi -= 1
+        if diff == 0 or target <= arr[x]:
+            break
+
+    return target - diff
+
+
+print(three_sum_closest([-1, 2, 1, -4], 1))
 
 
 
