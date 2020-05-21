@@ -10,7 +10,13 @@ def next_greater_permutation(arr):
     notice how even after the swap everything in arr[i:] is still in descending order.
     to the order.
 
-    Somply reverse arr[i:]
+    why is it still in descending order. The intution to follow is that n is THE SMALLESt
+    element GREATER than arr[i-1].
+
+    (arr[i-1] < arr[i] > n) > a > b > c > d.
+
+    simply reverse arr[i:]
+
 
     """
     index = 0
