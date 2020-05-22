@@ -541,6 +541,45 @@ def next_greater_permutation(arr):
         arr[index + x], arr[backwards] = arr[backwards], arr[index+x]
         backwards -= 1
 
-l = [1,0,3,2]
-next_greater_permutation(l)
-print(l)
+
+def find_pivot_point(arr, left, right):
+    midpoint = left + (right - left) // 2
+
+    if left < right:
+        if arr[midpoint] > arr[right]:
+            return find_pivot_point(arr, midpoint + 1, right)
+
+        return find_pivot_point(arr, left, midpoint-1)
+
+    return left
+
+def binary_search(arr, left, right, target):
+    if left < right:
+        midpoint = left + (right - left) // 2
+        if arr[midpoint] == target:
+            return midpoint
+
+        elif target < arr[midpoint]:
+            return binary_search(arr, left, midpoint, target)
+
+        return binary_search(arr, midpoint, right, target)
+
+    return -1
+
+def search_in_rotated_array(arr, target):
+    """given a sorted array that is rotated, find the target.
+
+    intutition: can we use binary search to find the smallest element in the array.?
+
+    """
+
+    pivot_index = find_pivot_point(arr, 0, len(arr)-1)
+
+    # use the pivot index to find the element. look at the pivot index and see if the elemnt falls between pivot to end of array.
+    # if it does, perform a binary search on the right hand side, else perform a bianery search on the left hand side.
+    if arr[pivot_index] <= target <= arr[-1]:
+        return binary_search(arr, pivot_index, len(arr)-1, target)
+
+    return binary_search(arr, 0, pivot_index, target)
+
+print(search_in_rotated_array([4,5,6,7,0,1,2],0))
