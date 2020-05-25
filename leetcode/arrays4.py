@@ -577,9 +577,27 @@ def search_in_rotated_array(arr, target):
 
     # use the pivot index to find the element. look at the pivot index and see if the elemnt falls between pivot to end of array.
     # if it does, perform a binary search on the right hand side, else perform a bianery search on the left hand side.
+
     if arr[pivot_index] <= target <= arr[-1]:
         return binary_search(arr, pivot_index, len(arr)-1, target)
 
     return binary_search(arr, 0, pivot_index, target)
 
-print(search_in_rotated_array([4,5,6,7,0,1,2],0))
+def binary_search_imp(arr, start, end, target):
+    if start < end:
+        pivot = start + (end - start)//2
+
+        if arr[pivot] == target:
+            return pivot
+
+        elif target < arr[pivot]:
+            return binary_search_imp(arr, start, pivot-1, target)
+
+        return binary_search_imp(arr, pivot+1, end, target)
+
+    return -1
+
+def bs_search(arr, target):
+    return binary_search_imp(arr, 0, len(arr), target)
+
+print(bs_search([1,3,9,21,22,29,30,31], 9))
